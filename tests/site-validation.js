@@ -1,5 +1,5 @@
 /**
- * Katla Group - Comprehensive Site Validation Script
+ * Katla Intel - Comprehensive Site Validation Script
  *
  * Self-contained Node.js script that:
  *   1. Starts a local HTTP server serving the project root
@@ -233,7 +233,7 @@ async function testNavbarPresence(page, baseUrl) {
 
     const hasLogo = await page.$('#navbar .navbar__logo img');
     if (!hasLogo) {
-      fail(suite, `${route.path} - #navbar missing Katla Group logo`);
+      fail(suite, `${route.path} - #navbar missing Katla Intel logo`);
       continue;
     }
 
@@ -451,7 +451,7 @@ async function testImageValidation(page, baseUrl) {
 // ---------------------------------------------------------------------------
 
 function printReport() {
-  console.log('\n=== Katla Group Site Validation ===\n');
+  console.log('\n=== Katla Intel Site Validation ===\n');
 
   // Group by suite preserving insertion order
   const suiteOrder = [];
@@ -484,7 +484,7 @@ function printReport() {
 // ---------------------------------------------------------------------------
 
 async function main() {
-  console.log('Starting Katla Group site validation...\n');
+  console.log('Starting Katla Intel site validation...\n');
 
   // Start server
   const { server, baseUrl } = await createServer();

@@ -1,5 +1,5 @@
 /**
- * Katla Group - Case Study Detail
+ * Katla Intel - Case Study Detail
  * Loads a single case study by slug from API
  */
 (function() {
@@ -72,7 +72,7 @@
     var metricsSection = document.getElementById('study-metrics');
     var techSection = document.getElementById('study-technologies');
 
-    document.title = study.title + ' | Katla Group Case Studies';
+    document.title = study.title + ' | Katla Intel Case Studies';
 
     var metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc && study.description) {

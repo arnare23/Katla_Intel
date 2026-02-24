@@ -1,5 +1,5 @@
 /**
- * Katla Group - Dynamic Careers
+ * Katla Intel - Dynamic Careers
  * Loads published job listings from API
  */
 (function() {

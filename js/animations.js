@@ -1,5 +1,5 @@
 /**
- * Katla Group - Scroll Animations
+ * Katla Intel - Scroll Animations
  * IntersectionObserver reveals, stagger, counter animations
  */
 (function() {

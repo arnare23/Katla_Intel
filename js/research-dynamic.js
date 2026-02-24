@@ -1,5 +1,5 @@
 /**
- * Katla Group - Dynamic Research Listing
+ * Katla Intel - Dynamic Research Listing
  * Loads published research from API with tag filtering
  */
 (function() {

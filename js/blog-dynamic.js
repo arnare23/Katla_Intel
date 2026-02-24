@@ -1,5 +1,5 @@
 /**
- * Katla Group - Blog Dynamic Loading
+ * Katla Intel - Blog Dynamic Loading
  * Loads blog posts from API with filtering, pagination, and newsletter subscription
  */
 (function() {
@@ -83,7 +83,7 @@
           '<span>|</span>' +
           '<span>' + (post.readTime || 5) + ' min read</span>' +
           '<span>|</span>' +
-          '<span>By ' + (post.author || 'Katla Group') + '</span>' +
+          '<span>By ' + (post.author || 'Katla Intel') + '</span>' +
         '</div>' +
         '<h2 class="featured-post__title">' + DOMPurify.sanitize(post.title) + '</h2>' +
         '<p class="featured-post__excerpt">' + DOMPurify.sanitize(post.excerpt) + '</p>' +

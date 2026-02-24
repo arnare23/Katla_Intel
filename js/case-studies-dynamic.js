@@ -1,5 +1,5 @@
 /**
- * Katla Group - Case Studies Dynamic Loading
+ * Katla Intel - Case Studies Dynamic Loading
  * Loads case studies from API with category filtering
  */
 (function() {

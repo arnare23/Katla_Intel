@@ -8,7 +8,7 @@
     '<nav class="navbar" id="navbar">' +
       '<div class="navbar__inner">' +
         '<a href="/" class="navbar__logo">' +
-          '<span>Katla Group</span>' +
+          '<span>Katla Intel</span>' +
         '</a>' +
         '<ul class="navbar__menu" id="navMenu">' +
           '<li><a href="/" class="navbar__link">Home</a></li>' +
@@ -51,7 +51,7 @@
         '<div class="footer__grid">' +
           '<div class="footer__brand">' +
             '<a href="/" class="footer__logo">' +
-              '<span>Katla Group</span>' +
+              '<span>Katla Intel</span>' +
             '</a>' +
             '<p class="footer__description">Custom neural network solutions that help businesses automate workflows, extract insights, and make smarter decisions.</p>' +
             '<div class="footer__social">' +
@@ -95,7 +95,6 @@
           '</div>' +
         '</div>' +
         '<div class="footer__bottom">' +
-          '<p class="footer__copyright">&copy; 2026 Katla Group. All rights reserved.</p>' +
           '<div class="footer__bottom-links">' +
             '<a href="#" class="footer__bottom-link">Privacy Policy</a>' +
             '<a href="#" class="footer__bottom-link">Terms of Service</a>' +

@@ -1,5 +1,5 @@
 /**
- * Katla Group - Blog Post Detail
+ * Katla Intel - Blog Post Detail
  * Loads a single blog post by slug from API
  */
 (function() {
@@ -68,7 +68,7 @@
     var heroSection = document.getElementById('post-hero');
     var contentSection = document.getElementById('post-content');
 
-    document.title = post.title + ' | Katla Group Blog';
+    document.title = post.title + ' | Katla Intel Blog';
 
     var metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc && post.excerpt) {
@@ -95,7 +95,7 @@
           '<span class="badge ' + getCategoryBadgeClass(post.category) + '" style="margin-bottom:var(--space-md)">' + DOMPurify.sanitize(post.category) + '</span>' +
           '<h1 style="font-size:var(--font-size-3xl);color:var(--color-white);margin-bottom:var(--space-lg);max-width:800px;margin-left:auto;margin-right:auto">' + DOMPurify.sanitize(post.title) + '</h1>' +
           '<div style="display:flex;align-items:center;justify-content:center;gap:var(--space-md);font-size:var(--font-size-sm);color:rgba(255,255,255,0.7)">' +
-            '<span>By ' + DOMPurify.sanitize(post.author || 'Katla Group') + '</span>' +
+            '<span>By ' + DOMPurify.sanitize(post.author || 'Katla Intel') + '</span>' +
             '<span>|</span>' +
             '<span>' + formatDate(post.publishedAt) + '</span>' +
             '<span>|</span>' +

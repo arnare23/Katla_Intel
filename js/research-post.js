@@ -1,5 +1,5 @@
 /**
- * Katla Group - Research Post Detail
+ * Katla Intel - Research Post Detail
  * Loads a single research post by slug from API
  */
 (function() {
@@ -31,7 +31,7 @@
 
         // Update page title
         if (post.title) {
-          document.title = post.title + ' | Research | Katla Group';
+          document.title = post.title + ' | Research | Katla Intel';
         }
       })
       .catch(function(err) {

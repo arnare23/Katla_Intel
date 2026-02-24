@@ -1,5 +1,5 @@
 /**
- * Katla Group - Main JavaScript
+ * Katla Intel - Main JavaScript
  * Core: navbar behavior, smooth scroll, active nav links
  */
 (function() {

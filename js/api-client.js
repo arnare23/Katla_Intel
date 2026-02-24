@@ -1,5 +1,5 @@
 /**
- * Katla Group - API Client
+ * Katla Intel - API Client
  * Replaces Firebase as the data layer. Exposes window.KatlaAPI.
  */
 (function() {

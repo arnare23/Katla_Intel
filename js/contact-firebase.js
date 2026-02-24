@@ -1,5 +1,5 @@
 /**
- * Katla Group - Contact Form + FAQ Accordion
+ * Katla Intel - Contact Form + FAQ Accordion
  * Form validation with API submission and accordion behavior
  */
 (function() {

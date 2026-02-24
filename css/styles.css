@@ -1,5 +1,5 @@
 /* ============================================================
-   KATLA GROUP - Global Stylesheet
+   KATLA INTEL - Global Stylesheet
    Clean Minimal Light Design System
    ============================================================ */
 
@@ -579,10 +579,6 @@ p:last-child {
   text-align: center;
 }
 
-.footer__copyright {
-  font-size: var(--font-size-sm);
-  color: rgba(255, 255, 255, 0.4);
-}
 
 .footer__bottom-links {
   display: flex;
