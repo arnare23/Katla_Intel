@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers | Katla Group - AI Solutions</title>
+  <meta name="description" content="Join the Katla Group team. We're looking for talented engineers, researchers, and thinkers passionate about building AI solutions.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Careers | Katla Group - AI Solutions">
+  <meta property="og:description" content="Join the Katla Group team. We're looking for talented engineers, researchers, and thinkers passionate about building AI solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="navbar-root"></div>
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <nav class="page-header__breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">/</span>
+          <span>Careers</span>
+        </nav>
+        <h1 class="page-header__title">Join Our Team</h1>
+        <p class="page-header__description">Build the future of AI with us</p>
+      </div>
+    </section>
+
+    <!-- Culture -->
+    <section id="culture" class="culture section section--light">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Why Katla Group?</h2>
+          <p class="section__subtitle">We're building a team that values impact, learning, and balance.</p>
+        </div>
+        <div class="culture-grid" data-reveal-stagger>
+
+          <!-- Perk 1: Remote-First -->
+          <div class="culture-perk">
+            <div class="culture-perk__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3 class="culture-perk__title">Remote-First</h3>
+            <p class="culture-perk__text">Work from anywhere. We believe great work happens where you're most comfortable and productive.</p>
+          </div>
+
+          <!-- Perk 2: Flexible Hours -->
+          <div class="culture-perk">
+            <div class="culture-perk__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3 class="culture-perk__title">Flexible Hours</h3>
+            <p class="culture-perk__text">Results matter more than hours logged. Set your own schedule around your most productive times.</p>
+          </div>
+
+          <!-- Perk 3: Learning Budget -->
+          <div class="culture-perk">
+            <div class="culture-perk__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <h3 class="culture-perk__title">Learning Budget</h3>
+            <p class="culture-perk__text">Annual budget for courses, conferences, and books. We invest in your growth.</p>
+          </div>
+
+          <!-- Perk 4: Equity Options -->
+          <div class="culture-perk">
+            <div class="culture-perk__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><polyline points="18 20 18 4"/><polyline points="6 20 6 16"/></svg>
+            </div>
+            <h3 class="culture-perk__title">Equity Options</h3>
+            <p class="culture-perk__text">Share in our success. All team members receive equity, aligning incentives with long-term value creation.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Open Positions (Dynamic) -->
+    <section id="positions" class="positions section section--gray">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">Open Positions</h2>
+        </div>
+        <div class="positions-list" id="positions-list" data-reveal-stagger>
+          <!-- Jobs loaded dynamically from Firestore -->
+        </div>
+      </div>
+    </section>
+
+    <!-- General Application -->
+    <section id="general-apply" class="section section--light">
+      <div class="container">
+        <div class="general-application" data-reveal="fade-up">
+          <h2 class="general-application__title">Don't See Your Role?</h2>
+          <p class="general-application__text">We're always looking for exceptional people. If you're passionate about AI, we'd love to hear from you.</p>
+          <a href="mailto:careers@katlagroup.com" class="btn btn--primary">Send Us Your CV</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/careers-dynamic.js"></script>
+  <script src="../js/debug-panel.js"></script>
+</body>
+</html>

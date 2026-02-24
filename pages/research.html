@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research &amp; Publications | Katla Group - AI Solutions</title>
+  <meta name="description" content="Our latest research and technical insights on AI, deep learning, and applied machine learning from the Katla Group team.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Research & Publications | Katla Group - AI Solutions">
+  <meta property="og:description" content="Our latest research and technical insights on AI, deep learning, and applied machine learning from the Katla Group team.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="navbar-root"></div>
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <nav class="page-header__breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">/</span>
+          <span>Research</span>
+        </nav>
+        <h1 class="page-header__title">Research &amp; Publications</h1>
+        <p class="page-header__description">Our latest research and technical insights</p>
+      </div>
+    </section>
+
+    <!-- Research Grid -->
+    <section class="section section--light">
+      <div class="container">
+        <!-- Tag Filter Bar -->
+        <div class="filter-bar" id="research-filters" data-reveal="fade-up">
+          <!-- Filters populated dynamically -->
+        </div>
+
+        <!-- Research Cards Grid -->
+        <div class="blog-grid" id="research-grid">
+          <!-- Research loaded dynamically from Firestore -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-root"></div>
+
+  <!-- Scripts -->
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/research-dynamic.js"></script>
+  <script src="../js/debug-panel.js"></script>
+</body>
+</html>

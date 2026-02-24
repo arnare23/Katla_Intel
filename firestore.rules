@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Enquiries: public create, admin-only read/update/delete
+    match /enquiries/{docId} {
+      allow create: if request.resource.data.keys().hasAll(['name', 'email', 'service', 'message'])
+                    && request.resource.data.name is string
+                    && request.resource.data.email is string
+                    && request.resource.data.message is string;
+      allow read, update, delete: if request.auth != null;
+    }
+
+    // Blog posts: public read published, admin write
+    match /posts/{docId} {
+      allow read: if resource.data.status == 'published' || request.auth != null;
+      allow create, update, delete: if request.auth != null;
+    }
+
+    // Case studies: public read published, admin write
+    match /caseStudies/{docId} {
+      allow read: if resource.data.status == 'published' || request.auth != null;
+      allow create, update, delete: if request.auth != null;
+    }
+
+    // Job listings: public read published, admin write
+    match /jobs/{docId} {
+      allow read: if resource.data.status == 'published' || request.auth != null;
+      allow create, update, delete: if request.auth != null;
+    }
+
+    // Research: public read published, admin write
+    match /research/{docId} {
+      allow read: if resource.data.status == 'published' || request.auth != null;
+      allow create, update, delete: if request.auth != null;
+    }
+
+    // Newsletter subscribers: public create, admin read
+    match /subscribers/{docId} {
+      allow create: if request.resource.data.email is string;
+      allow read, delete: if request.auth != null;
+    }
+  }
+}
