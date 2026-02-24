@@ -19,8 +19,8 @@
   AdminUtils.formatDate = function(timestamp) {
     if (!timestamp) return 'N/A';
     var date;
-    if (timestamp.toDate) {
-      date = timestamp.toDate();
+    if (typeof timestamp === 'string') {
+      date = new Date(timestamp);
     } else if (timestamp instanceof Date) {
       date = timestamp;
     } else if (typeof timestamp === 'number') {
@@ -28,6 +28,7 @@
     } else {
       return 'N/A';
     }
+    if (isNaN(date.getTime())) return 'N/A';
     return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
@@ -38,8 +39,8 @@
   AdminUtils.formatDateTime = function(timestamp) {
     if (!timestamp) return 'N/A';
     var date;
-    if (timestamp.toDate) {
-      date = timestamp.toDate();
+    if (typeof timestamp === 'string') {
+      date = new Date(timestamp);
     } else if (timestamp instanceof Date) {
       date = timestamp;
     } else if (typeof timestamp === 'number') {
@@ -47,6 +48,7 @@
     } else {
       return 'N/A';
     }
+    if (isNaN(date.getTime())) return 'N/A';
     return date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
