@@ -42,127 +42,19 @@
       </div>
     </section>
 
-    <!-- Filter Bar -->
-    <section class="section section--light" style="padding-bottom:0;">
-      <div class="container">
-        <div class="filter-bar">
-          <button class="filter-bar__btn filter-bar__btn--active" type="button" data-filter="all">All</button>
-          <button class="filter-bar__btn" type="button" data-filter="deep-learning">Deep Learning</button>
-          <button class="filter-bar__btn" type="button" data-filter="automation">Automation</button>
-          <button class="filter-bar__btn" type="button" data-filter="file-management">File Management</button>
-          <button class="filter-bar__btn" type="button" data-filter="consulting">Consulting</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Case Studies Grid -->
-    <section id="case-studies-grid" class="section section--gray">
-      <div class="container">
-        <div id="case-studies-container" class="case-study-grid" data-reveal-stagger>
-
-          <!-- Static fallback cards -->
-          <article class="card card--case-study" data-reveal="fade-up">
-            <div class="card__image">
-              <div class="placeholder-image" style="min-height:220px;border-radius:0;" aria-hidden="true">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="12" cy="12" r="2.5"/>
-                  <line x1="12" y1="7" x2="12" y2="9.5"/><line x1="7" y1="12" x2="9.5" y2="12"/><line x1="14.5" y1="12" x2="17" y2="12"/>
-                </svg>
-              </div>
-            </div>
-            <div class="card__body" style="padding:var(--space-xl)">
-              <span class="badge badge--blue">Deep Learning</span>
-              <h3 class="card__title" style="margin-top:var(--space-md);">Real-Time Fish Species Identification</h3>
-              <p class="card__meta">Nordic Fishing Corp</p>
-              <p class="card__description">Built a computer vision system deployed on fishing vessels that identifies 12 species of fish in real-time from conveyor belt camera feeds, enabling accurate catch logging and sustainable fishing compliance.</p>
-              <div class="card--case-study__metrics" style="display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-md);">
-                <span class="metric-badge">98.5% Accuracy</span>
-                <span class="metric-badge">12 Species</span>
-                <span class="metric-badge">&lt; 200ms Latency</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card card--case-study" data-reveal="fade-up">
-            <div class="card__image">
-              <div class="placeholder-image" style="min-height:220px;border-radius:0;" aria-hidden="true">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="3"/>
-                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                </svg>
-              </div>
-            </div>
-            <div class="card__body" style="padding:var(--space-xl)">
-              <span class="badge badge--blue">Automation</span>
-              <h3 class="card__title" style="margin-top:var(--space-md);">Intelligent Invoice Processing</h3>
-              <p class="card__meta">FinanceFlow Ltd</p>
-              <p class="card__description">Designed an automated pipeline that extracts, validates, and routes data from invoices and receipts across multiple formats, reducing manual processing time by 85% and eliminating data entry errors.</p>
-              <div class="card--case-study__metrics" style="display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-md);">
-                <span class="metric-badge">85% Time Saved</span>
-                <span class="metric-badge">10K Docs/Day</span>
-                <span class="metric-badge">99.2% Extraction Accuracy</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card card--case-study" data-reveal="fade-up">
-            <div class="card__image">
-              <div class="placeholder-image" style="min-height:220px;border-radius:0;" aria-hidden="true">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  <polyline points="9 12 11 14 15 10"/>
-                </svg>
-              </div>
-            </div>
-            <div class="card__body" style="padding:var(--space-xl)">
-              <span class="badge badge--green">Deep Learning</span>
-              <h3 class="card__title" style="margin-top:var(--space-md);">Equipment Failure Prediction</h3>
-              <p class="card__meta">IndustriTech AS</p>
-              <p class="card__description">Developed a predictive maintenance system using sensor data and deep learning to forecast equipment failures 48 hours in advance, reducing unplanned downtime by 40% across three manufacturing facilities.</p>
-              <div class="card--case-study__metrics" style="display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-md);">
-                <span class="metric-badge">40% Less Downtime</span>
-                <span class="metric-badge">48hr Advance Warning</span>
-                <span class="metric-badge">3 Facilities</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card card--case-study" data-reveal="fade-up">
-            <div class="card__image">
-              <div class="placeholder-image" style="min-height:220px;border-radius:0;" aria-hidden="true">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-                  <line x1="12" y1="11" x2="12" y2="17"/>
-                  <line x1="9" y1="14" x2="15" y2="14"/>
-                </svg>
-              </div>
-            </div>
-            <div class="card__body" style="padding:var(--space-xl)">
-              <span class="badge badge--gray">File Management</span>
-              <h3 class="card__title" style="margin-top:var(--space-md);">Intelligent Legal Document Archive</h3>
-              <p class="card__meta">LegalDocs ehf</p>
-              <p class="card__description">Created an AI-powered document management system that automatically classifies, tags, and organizes over 500,000 legal documents, with natural language search enabling lawyers to find relevant precedents in seconds.</p>
-              <div class="card--case-study__metrics" style="display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-md);">
-                <span class="metric-badge">500K+ Documents</span>
-                <span class="metric-badge">95% Classification</span>
-                <span class="metric-badge">&lt; 2s Search</span>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Banner -->
-    <section class="section section--light">
-      <div class="container">
-        <div class="cta-banner" data-reveal="fade-up">
-          <h2 class="cta-banner__title">Have a Similar Challenge?</h2>
-          <p class="cta-banner__text">Every project starts with a conversation. Tell us about your data and we'll explore what's possible.</p>
-          <div class="cta-banner__actions">
-            <a href="/pages/contact" class="btn btn--primary btn--large">Get in Touch</a>
-          </div>
+    <!-- Coming Soon -->
+    <section class="section section--light" style="min-height: 60vh; display: flex; align-items: center;">
+      <div class="container" style="text-align: center;">
+        <div data-reveal="fade-up">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent); margin-bottom: var(--space-xl);">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+          <h2 class="section__title" style="margin-bottom: var(--space-lg);">Coming Soon</h2>
+          <p class="section__subtitle" style="max-width: 500px; margin: 0 auto var(--space-2xl);">We're documenting our project results. Check back soon to see how we've helped businesses with AI.</p>
+          <a href="/pages/contact" class="btn btn--primary btn--large">Get in Touch</a>
         </div>
       </div>
     </section>
