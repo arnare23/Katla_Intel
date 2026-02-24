@@ -1,24 +1,23 @@
 /**
  * Katla Group - Dynamic Careers
- * Loads published job listings from Firestore
+ * Loads published job listings from API
  */
 (function() {
   'use strict';
 
   function initCareers() {
     var container = document.getElementById('positions-list');
-    if (!container || !window.db) return;
+    if (!container) return;
 
     showSkeletons(container);
 
-    window.db.collection('jobs')
-      .where('status', '==', 'published')
-      .orderBy('order')
-      .get()
-      .then(function(snapshot) {
+    KatlaAPI.jobs.list()
+      .then(function(response) {
         container.innerHTML = '';
 
-        if (snapshot.empty) {
+        var jobs = response.data || [];
+
+        if (jobs.length === 0) {
           container.innerHTML = '<div class="positions-empty" data-reveal="fade-up">' +
             '<p style="text-align:center; color:var(--color-text-secondary); font-size:var(--font-size-md); padding:var(--space-3xl) 0;">No open positions at the moment. Check back soon!</p>' +
             '</div>';
@@ -26,8 +25,7 @@
           return;
         }
 
-        snapshot.forEach(function(doc) {
-          var job = doc.data();
+        jobs.forEach(function(job) {
           container.appendChild(buildJobCard(job));
         });
 

@@ -1,21 +1,21 @@
 /**
  * Katla Group - Blog Dynamic Loading
- * Loads blog posts from Firestore with filtering, pagination, and newsletter subscription
+ * Loads blog posts from API with filtering, pagination, and newsletter subscription
  */
 (function() {
   'use strict';
 
   var POSTS_PER_PAGE = 9;
   var currentCategory = 'all';
-  var lastDoc = null;
+  var currentOffset = 0;
   var isLoading = false;
   var hasMore = true;
 
   var placeholderSVG = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>';
 
-  function formatDate(timestamp) {
-    if (!timestamp) return '';
-    var date = new Date(timestamp.seconds * 1000);
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    var date = new Date(dateStr);
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
@@ -134,25 +134,15 @@
 
     container.innerHTML = createFeaturedSkeleton();
 
-    if (typeof window.db === 'undefined') return;
-
-    window.db.collection('posts')
-      .where('status', '==', 'published')
-      .where('featured', '==', true)
-      .limit(1)
-      .get()
-      .then(function(snapshot) {
-        if (!snapshot.empty) {
-          renderFeaturedPost(snapshot.docs[0].data());
+    KatlaAPI.posts.list({ featured: true, limit: 1 })
+      .then(function(response) {
+        if (response.data && response.data.length > 0) {
+          renderFeaturedPost(response.data[0]);
         } else {
-          return window.db.collection('posts')
-            .where('status', '==', 'published')
-            .orderBy('publishedAt', 'desc')
-            .limit(1)
-            .get()
-            .then(function(fallbackSnapshot) {
-              if (!fallbackSnapshot.empty) {
-                renderFeaturedPost(fallbackSnapshot.docs[0].data());
+          return KatlaAPI.posts.list({ limit: 1 })
+            .then(function(fallbackResponse) {
+              if (fallbackResponse.data && fallbackResponse.data.length > 0) {
+                renderFeaturedPost(fallbackResponse.data[0]);
               }
             });
         }
@@ -172,7 +162,7 @@
 
     if (!append) {
       showLoadingGrid();
-      lastDoc = null;
+      currentOffset = 0;
       hasMore = true;
     }
 
@@ -181,50 +171,36 @@
       loadMoreBtn.disabled = true;
     }
 
-    if (typeof window.db === 'undefined') {
-      isLoading = false;
-      return;
-    }
-
-    var query = window.db.collection('posts')
-      .where('status', '==', 'published')
-      .orderBy('publishedAt', 'desc')
-      .limit(POSTS_PER_PAGE);
+    var params = {
+      limit: POSTS_PER_PAGE,
+      offset: currentOffset
+    };
 
     if (currentCategory !== 'all') {
-      query = window.db.collection('posts')
-        .where('status', '==', 'published')
-        .where('category', '==', currentCategory)
-        .orderBy('publishedAt', 'desc')
-        .limit(POSTS_PER_PAGE);
+      params.category = currentCategory;
     }
 
-    if (lastDoc) {
-      query = query.startAfter(lastDoc);
-    }
-
-    query.get()
-      .then(function(snapshot) {
+    KatlaAPI.posts.list(params)
+      .then(function(response) {
         if (!append) {
           grid.innerHTML = '';
         }
 
-        if (snapshot.empty && !append) {
+        var posts = response.data || [];
+        var total = response.total || 0;
+
+        if (posts.length === 0 && !append) {
           grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:var(--space-3xl) 0">' +
             '<p style="font-size:var(--font-size-md);color:var(--color-text-muted)">No posts found in this category.</p>' +
           '</div>';
           hasMore = false;
         } else {
-          snapshot.forEach(function(doc) {
-            var post = doc.data();
+          posts.forEach(function(post) {
             grid.insertAdjacentHTML('beforeend', renderBlogCard(post));
           });
 
-          if (snapshot.docs.length > 0) {
-            lastDoc = snapshot.docs[snapshot.docs.length - 1];
-          }
-
-          hasMore = snapshot.docs.length === POSTS_PER_PAGE;
+          currentOffset += posts.length;
+          hasMore = currentOffset < total;
         }
 
         if (loadMoreBtn) {
@@ -290,17 +266,7 @@
       submitBtn.textContent = 'Subscribing...';
       submitBtn.disabled = true;
 
-      if (typeof window.db === 'undefined') {
-        submitBtn.textContent = 'Subscribe';
-        submitBtn.disabled = false;
-        return;
-      }
-
-      window.db.collection('subscribers').add({
-        email: email,
-        subscribedAt: firebase.firestore.FieldValue.serverTimestamp(),
-        source: 'blog'
-      })
+      KatlaAPI.subscribers.subscribe(email, 'blog')
       .then(function() {
         emailInput.value = '';
         submitBtn.textContent = 'Subscribed!';

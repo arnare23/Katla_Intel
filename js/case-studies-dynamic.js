@@ -1,6 +1,6 @@
 /**
  * Katla Group - Case Studies Dynamic Loading
- * Loads case studies from Firestore with category filtering
+ * Loads case studies from API with category filtering
  */
 (function() {
   'use strict';
@@ -16,9 +16,9 @@
     'consulting': 'Consulting'
   };
 
-  function formatDate(timestamp) {
-    if (!timestamp) return '';
-    var date = new Date(timestamp.seconds * 1000);
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    var date = new Date(dateStr);
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
@@ -108,35 +108,24 @@
 
     showLoadingGrid();
 
-    if (typeof window.db === 'undefined') {
-      isLoading = false;
-      return;
-    }
-
-    var query;
-    if (currentFilter === 'all') {
-      query = window.db.collection('caseStudies')
-        .where('status', '==', 'published')
-        .orderBy('order', 'asc');
-    } else {
+    var params = {};
+    if (currentFilter !== 'all') {
       var categoryName = categoryMap[currentFilter] || currentFilter;
-      query = window.db.collection('caseStudies')
-        .where('status', '==', 'published')
-        .where('category', '==', categoryName)
-        .orderBy('order', 'asc');
+      params.category = categoryName;
     }
 
-    query.get()
-      .then(function(snapshot) {
+    KatlaAPI.caseStudies.list(params)
+      .then(function(response) {
         grid.innerHTML = '';
 
-        if (snapshot.empty) {
+        var studies = response.data || [];
+
+        if (studies.length === 0) {
           grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:var(--space-3xl) 0">' +
             '<p style="font-size:var(--font-size-md);color:var(--color-text-muted)">No case studies found in this category.</p>' +
           '</div>';
         } else {
-          snapshot.forEach(function(doc) {
-            var study = doc.data();
+          studies.forEach(function(study) {
             grid.insertAdjacentHTML('beforeend', renderCaseStudyCard(study));
           });
         }

@@ -1,13 +1,13 @@
 /**
  * Katla Group - Blog Post Detail
- * Loads a single blog post by slug from Firestore
+ * Loads a single blog post by slug from API
  */
 (function() {
   'use strict';
 
-  function formatDate(timestamp) {
-    if (!timestamp) return '';
-    var date = new Date(timestamp.seconds * 1000);
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    var date = new Date(dateStr);
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
@@ -171,23 +171,10 @@
     relatedSection.style.display = '';
   }
 
-  function loadRelatedPosts(category, currentSlug) {
-    if (typeof window.db === 'undefined') return;
-
-    window.db.collection('posts')
-      .where('status', '==', 'published')
-      .where('category', '==', category)
-      .orderBy('publishedAt', 'desc')
-      .limit(4)
-      .get()
-      .then(function(snapshot) {
-        var posts = [];
-        snapshot.forEach(function(doc) {
-          var post = doc.data();
-          if (post.slug !== currentSlug) {
-            posts.push(post);
-          }
-        });
+  function loadRelatedPosts(slug) {
+    KatlaAPI.posts.related(slug)
+      .then(function(response) {
+        var posts = response.data || [];
         renderRelatedPosts(posts.slice(0, 3));
       })
       .catch(function(error) {
@@ -204,25 +191,16 @@
 
     showLoading();
 
-    if (typeof window.db === 'undefined') {
-      showNotFound();
-      return;
-    }
-
-    window.db.collection('posts')
-      .where('slug', '==', slug)
-      .where('status', '==', 'published')
-      .limit(1)
-      .get()
-      .then(function(snapshot) {
-        if (snapshot.empty) {
+    KatlaAPI.posts.getBySlug(slug)
+      .then(function(response) {
+        var post = response.data;
+        if (!post) {
           showNotFound();
           return;
         }
-        var post = snapshot.docs[0].data();
         renderPost(post);
         if (post.category) {
-          loadRelatedPosts(post.category, post.slug);
+          loadRelatedPosts(post.slug);
         }
       })
       .catch(function(error) {

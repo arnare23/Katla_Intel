@@ -1,13 +1,13 @@
 /**
  * Katla Group - Case Study Detail
- * Loads a single case study by slug from Firestore
+ * Loads a single case study by slug from API
  */
 (function() {
   'use strict';
 
-  function formatDate(timestamp) {
-    if (!timestamp) return '';
-    var date = new Date(timestamp.seconds * 1000);
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    var date = new Date(dateStr);
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
@@ -158,22 +158,13 @@
 
     showLoading();
 
-    if (typeof window.db === 'undefined') {
-      showNotFound();
-      return;
-    }
-
-    window.db.collection('caseStudies')
-      .where('slug', '==', slug)
-      .where('status', '==', 'published')
-      .limit(1)
-      .get()
-      .then(function(snapshot) {
-        if (snapshot.empty) {
+    KatlaAPI.caseStudies.getBySlug(slug)
+      .then(function(response) {
+        var study = response.data;
+        if (!study) {
           showNotFound();
           return;
         }
-        var study = snapshot.docs[0].data();
         renderStudy(study);
       })
       .catch(function(error) {

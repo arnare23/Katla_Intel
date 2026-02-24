@@ -1,12 +1,11 @@
 /**
- * Katla Group - Contact Form + FAQ Accordion (Firebase)
- * Form validation with Firestore submission and accordion behavior
- * Replaces form.js on the contact page
+ * Katla Group - Contact Form + FAQ Accordion
+ * Form validation with API submission and accordion behavior
  */
 (function() {
   'use strict';
 
-  // --- FORM VALIDATION + FIRESTORE SUBMIT ---
+  // --- FORM VALIDATION + API SUBMIT ---
   function initForm() {
     var form = document.querySelector('.form');
     if (!form) return;
@@ -101,20 +100,11 @@
         email: form.querySelector('[name="email"]').value.trim(),
         company: (form.querySelector('[name="company"]') && form.querySelector('[name="company"]').value.trim()) || '',
         service: form.querySelector('[name="service"]').value,
-        message: form.querySelector('[name="message"]').value.trim(),
-        status: 'new',
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        readAt: null,
-        notes: ''
+        message: form.querySelector('[name="message"]').value.trim()
       };
 
-      // Write to Firestore
-      if (!window.db) {
-        showFormError(form, submitBtn, submitBtnText);
-        return;
-      }
-
-      window.db.collection('enquiries').add(data)
+      // Submit to API
+      KatlaAPI.enquiries.submit(data)
         .then(function() {
           // Success - hide form, show success message
           form.style.display = 'none';
