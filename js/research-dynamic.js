@@ -1,6 +1,6 @@
 /**
  * Katla Group - Dynamic Research Listing
- * Loads published research from Firestore with tag filtering
+ * Loads published research from API with tag filtering
  */
 (function() {
   'use strict';
@@ -11,19 +11,13 @@
   function initResearch() {
     var grid = document.getElementById('research-grid');
     var filterBar = document.getElementById('research-filters');
-    if (!grid || !window.db) return;
+    if (!grid) return;
 
     showSkeletons(grid);
 
-    window.db.collection('research')
-      .where('status', '==', 'published')
-      .orderBy('publishedAt', 'desc')
-      .get()
-      .then(function(snapshot) {
-        allResearch = [];
-        snapshot.forEach(function(doc) {
-          allResearch.push(doc.data());
-        });
+    KatlaAPI.research.list()
+      .then(function(response) {
+        allResearch = response.data || [];
 
         buildFilterBar(filterBar, allResearch);
         renderGrid(grid, allResearch);
@@ -120,7 +114,7 @@
     // Date
     var dateHTML = '';
     if (item.publishedAt) {
-      var d = item.publishedAt.toDate ? item.publishedAt.toDate() : new Date(item.publishedAt);
+      var d = new Date(item.publishedAt);
       dateHTML = '<span>' + formatDate(d) + '</span>';
     }
 

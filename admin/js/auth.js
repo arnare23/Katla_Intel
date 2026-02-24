@@ -9,15 +9,9 @@
     var loginForm = document.getElementById('loginForm');
     var loginError = document.getElementById('loginError');
 
-    if (!window.auth) {
-      loginError.textContent = 'Firebase Auth not initialized';
-      loginError.hidden = false;
-      return;
-    }
-
     // Listen to auth state
-    window.auth.onAuthStateChanged(function(user) {
-      if (user) {
+    KatlaAPI.auth.onAuthChange(function(isLoggedIn) {
+      if (isLoggedIn) {
         loginView.hidden = true;
         appShell.hidden = false;
         if (window.AdminApp && window.AdminApp.init) {
@@ -49,18 +43,14 @@
       btnText.hidden = true;
       btnLoader.hidden = false;
 
-      window.auth.signInWithEmailAndPassword(email, password)
+      KatlaAPI.auth.login(email, password)
         .then(function() {
-          // onAuthStateChanged will handle the UI switch
+          // onAuthChange will handle the UI switch
         })
         .catch(function(err) {
           var msg = 'Login failed. Please check your credentials.';
-          if (err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential') {
-            msg = 'Invalid email or password.';
-          } else if (err.code === 'auth/too-many-requests') {
-            msg = 'Too many failed attempts. Please try again later.';
-          } else if (err.code === 'auth/invalid-email') {
-            msg = 'Please enter a valid email address.';
+          if (err.message) {
+            msg = err.message;
           }
           loginError.textContent = msg;
           loginError.hidden = false;
@@ -72,9 +62,7 @@
   };
 
   AdminAuth.logout = function() {
-    if (window.auth) {
-      window.auth.signOut();
-    }
+    KatlaAPI.auth.logout();
   };
 
   window.AdminAuth = AdminAuth;

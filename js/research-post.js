@@ -1,13 +1,13 @@
 /**
  * Katla Group - Research Post Detail
- * Loads a single research post by slug from Firestore
+ * Loads a single research post by slug from API
  */
 (function() {
   'use strict';
 
   function initResearchPost() {
     var contentEl = document.getElementById('research-post-content');
-    if (!contentEl || !window.db) return;
+    if (!contentEl) return;
 
     var params = new URLSearchParams(window.location.search);
     var slug = params.get('slug');
@@ -19,18 +19,14 @@
 
     showSkeleton(contentEl);
 
-    window.db.collection('research')
-      .where('slug', '==', slug)
-      .where('status', '==', 'published')
-      .limit(1)
-      .get()
-      .then(function(snapshot) {
-        if (snapshot.empty) {
+    KatlaAPI.research.getBySlug(slug)
+      .then(function(response) {
+        var post = response.data;
+        if (!post) {
           showNotFound(contentEl);
           return;
         }
 
-        var post = snapshot.docs[0].data();
         renderPost(contentEl, post);
 
         // Update page title
@@ -52,7 +48,7 @@
     // Date
     var dateStr = '';
     if (post.publishedAt) {
-      var d = post.publishedAt.toDate ? post.publishedAt.toDate() : new Date(post.publishedAt);
+      var d = new Date(post.publishedAt);
       dateStr = formatDate(d);
     }
 

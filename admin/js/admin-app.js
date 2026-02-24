@@ -83,11 +83,10 @@
     var badge = document.getElementById('enquiryBadge');
     if (!badge) return;
 
-    window.db.collection('enquiries')
-      .where('status', '==', 'new')
-      .get()
-      .then(function(snapshot) {
-        var count = snapshot.size;
+    KatlaAPI.enquiries.list({ status: 'new', limit: 100 })
+      .then(function(response) {
+        var count = (response.data || []).length;
+        if (response.total !== undefined) count = response.total;
         if (count > 0) {
           badge.textContent = count > 99 ? '99+' : count;
           badge.hidden = false;
@@ -244,48 +243,25 @@
   };
 
   AdminApp.loadDashboardStats = function() {
-    // Unread enquiries
-    window.db.collection('enquiries').where('status', '==', 'new').get()
-      .then(function(snap) {
-        var el = document.getElementById('statEnquiries');
-        if (el) el.textContent = snap.size;
+    KatlaAPI.stats.dashboard()
+      .then(function(response) {
+        var stats = response.data || response;
+        var el;
+        el = document.getElementById('statEnquiries');
+        if (el) el.textContent = stats.newEnquiries !== undefined ? stats.newEnquiries : '0';
+        el = document.getElementById('statPosts');
+        if (el) el.textContent = stats.publishedPosts !== undefined ? stats.publishedPosts : '0';
+        el = document.getElementById('statCaseStudies');
+        if (el) el.textContent = stats.publishedCaseStudies !== undefined ? stats.publishedCaseStudies : '0';
+        el = document.getElementById('statJobs');
+        if (el) el.textContent = stats.publishedJobs !== undefined ? stats.publishedJobs : '0';
       })
       .catch(function() {
-        var el = document.getElementById('statEnquiries');
-        if (el) el.textContent = '0';
-      });
-
-    // Published posts
-    window.db.collection('posts').where('status', '==', 'published').get()
-      .then(function(snap) {
-        var el = document.getElementById('statPosts');
-        if (el) el.textContent = snap.size;
-      })
-      .catch(function() {
-        var el = document.getElementById('statPosts');
-        if (el) el.textContent = '0';
-      });
-
-    // Published case studies
-    window.db.collection('caseStudies').where('status', '==', 'published').get()
-      .then(function(snap) {
-        var el = document.getElementById('statCaseStudies');
-        if (el) el.textContent = snap.size;
-      })
-      .catch(function() {
-        var el = document.getElementById('statCaseStudies');
-        if (el) el.textContent = '0';
-      });
-
-    // Open jobs
-    window.db.collection('jobs').where('status', '==', 'published').get()
-      .then(function(snap) {
-        var el = document.getElementById('statJobs');
-        if (el) el.textContent = snap.size;
-      })
-      .catch(function() {
-        var el = document.getElementById('statJobs');
-        if (el) el.textContent = '0';
+        var ids = ['statEnquiries', 'statPosts', 'statCaseStudies', 'statJobs'];
+        ids.forEach(function(id) {
+          var el = document.getElementById(id);
+          if (el) el.textContent = '0';
+        });
       });
   };
 
@@ -293,18 +269,18 @@
     var tbody = document.getElementById('dashRecentEnquiries');
     if (!tbody) return;
 
-    window.db.collection('enquiries').orderBy('createdAt', 'desc').limit(5).get()
-      .then(function(snapshot) {
-        if (snapshot.empty) {
+    KatlaAPI.enquiries.list({ limit: 5 })
+      .then(function(response) {
+        var enquiries = response.data || [];
+        if (enquiries.length === 0) {
           tbody.innerHTML = '<tr><td colspan="5" class="admin-table__empty">No enquiries yet</td></tr>';
           return;
         }
         var rows = '';
-        snapshot.forEach(function(doc) {
-          var d = doc.data();
+        enquiries.forEach(function(d) {
           var status = d.status || 'new';
           var isUnread = status === 'new';
-          rows += '<tr class="admin-table__row--clickable ' + (isUnread ? 'admin-table__row--unread' : '') + '" data-id="' + doc.id + '">' +
+          rows += '<tr class="admin-table__row--clickable ' + (isUnread ? 'admin-table__row--unread' : '') + '" data-id="' + d.id + '">' +
             '<td>' + AdminUtils.escapeHtml(d.name || 'Unknown') + '</td>' +
             '<td>' + AdminUtils.escapeHtml(d.email || '') + '</td>' +
             '<td>' + AdminUtils.escapeHtml(d.service || 'General') + '</td>' +

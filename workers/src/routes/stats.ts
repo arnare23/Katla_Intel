@@ -2,10 +2,15 @@ import { Hono } from 'hono';
 import { requireAuth } from '../middleware/auth';
 import type { AppEnv } from '../types';
 
-const stats = new Hono<AppEnv>();
+// ---------------------------------------------------------------------------
+// Admin stats route  (mounted at /api/v1/admin/stats)
+// ---------------------------------------------------------------------------
 
-stats.get('/', requireAuth, async (c) => {
-  // Run all four COUNT queries in parallel
+export const adminStats = new Hono<AppEnv>();
+
+adminStats.use('*', requireAuth);
+
+adminStats.get('/', async (c) => {
   const [enquiriesResult, postsResult, caseStudiesResult, jobsResult] =
     await Promise.all([
       c.env.DB.prepare(
@@ -29,5 +34,3 @@ stats.get('/', requireAuth, async (c) => {
     jobs: jobsResult?.count ?? 0,
   });
 });
-
-export default stats;
