@@ -59,19 +59,19 @@
     var tbody = document.getElementById('jobsTableBody');
     if (!tbody) return;
 
-    var query = window.db.collection('jobs').orderBy('createdAt', 'desc');
+    var params = {};
     if (currentFilter !== 'all') {
-      query = query.where('status', '==', currentFilter);
+      params.status = currentFilter;
     }
 
-    query.get().then(function(snapshot) {
-      if (snapshot.empty) {
+    KatlaAPI.jobs.adminList(params).then(function(response) {
+      var jobs = response.data || [];
+      if (jobs.length === 0) {
         tbody.innerHTML = '<tr><td colspan="5" class="admin-table__empty">No jobs found</td></tr>';
         return;
       }
       var rows = '';
-      snapshot.forEach(function(doc) {
-        var d = doc.data();
+      jobs.forEach(function(d) {
         var status = d.status || 'draft';
         rows += '<tr>' +
           '<td><strong>' + AdminUtils.escapeHtml(AdminUtils.truncate(d.title || 'Untitled', 50)) + '</strong></td>' +
@@ -79,8 +79,8 @@
           '<td>' + AdminUtils.escapeHtml(d.location || 'N/A') + '</td>' +
           '<td><span class="admin-badge admin-badge--' + status + '">' + status.charAt(0).toUpperCase() + status.slice(1) + '</span></td>' +
           '<td class="admin-table__actions">' +
-            '<a href="#/jobs/edit/' + doc.id + '" class="admin-table__action-btn">Edit</a>' +
-            '<button class="admin-table__action-btn admin-table__action-btn--danger" data-delete="' + doc.id + '">Delete</button>' +
+            '<a href="#/jobs/edit/' + d.id + '" class="admin-table__action-btn">Edit</a>' +
+            '<button class="admin-table__action-btn admin-table__action-btn--danger" data-delete="' + d.id + '">Delete</button>' +
           '</td>' +
         '</tr>';
       });
@@ -91,7 +91,7 @@
           var docId = btn.getAttribute('data-delete');
           AdminUtils.confirm('Delete Job', 'Are you sure? This cannot be undone.').then(function(ok) {
             if (ok) {
-              window.db.collection('jobs').doc(docId).delete().then(function() {
+              KatlaAPI.jobs.delete(docId).then(function() {
                 AdminUtils.showToast('Job deleted');
                 AdminJobs.loadList();
               }).catch(function(err) { AdminUtils.showToast('Error: ' + err.message, 'error'); });
@@ -208,9 +208,9 @@
 
     // Load if editing
     if (isEdit) {
-      window.db.collection('jobs').doc(id).get().then(function(doc) {
-        if (!doc.exists) { AdminUtils.showToast('Not found', 'error'); AdminRouter.navigate('/jobs'); return; }
-        var d = doc.data();
+      KatlaAPI.jobs.get(id).then(function(response) {
+        var d = response.data;
+        if (!d) { AdminUtils.showToast('Not found', 'error'); AdminRouter.navigate('/jobs'); return; }
         document.getElementById('jobTitle').value = d.title || '';
         document.getElementById('jobDepartment').value = d.department || '';
         document.getElementById('jobType').value = d.type || '';
@@ -221,6 +221,9 @@
         document.getElementById('jobStatusLabel').textContent = d.status === 'published' ? 'Published' : 'Draft';
         if (d.content) AdminEditor.setContent(d.content);
         if (d.requirements && d.requirements.length) { requirements = d.requirements.slice(); renderRequirements(); }
+      }).catch(function(err) {
+        AdminUtils.showToast('Error: ' + err.message, 'error');
+        AdminRouter.navigate('/jobs');
       });
     }
 
@@ -249,16 +252,14 @@
         requirements: requirements.filter(function(r) { return r.trim(); }),
         content: DOMPurify.sanitize(AdminEditor.getContent()),
         order: parseInt(document.getElementById('jobOrder').value) || 0,
-        status: document.getElementById('jobStatus').checked ? 'published' : 'draft',
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        status: document.getElementById('jobStatus').checked ? 'published' : 'draft'
       };
 
       var promise;
       if (isEdit) {
-        promise = window.db.collection('jobs').doc(id).update(data);
+        promise = KatlaAPI.jobs.update(id, data);
       } else {
-        data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-        promise = window.db.collection('jobs').add(data);
+        promise = KatlaAPI.jobs.create(data);
       }
 
       promise.then(function() {

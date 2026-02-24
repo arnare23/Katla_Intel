@@ -46,19 +46,19 @@
     var tbody = document.getElementById('researchTableBody');
     if (!tbody) return;
 
-    var query = window.db.collection('research').orderBy('createdAt', 'desc');
+    var params = {};
     if (currentFilter !== 'all') {
-      query = query.where('status', '==', currentFilter);
+      params.status = currentFilter;
     }
 
-    query.get().then(function(snapshot) {
-      if (snapshot.empty) {
+    KatlaAPI.research.adminList(params).then(function(response) {
+      var papers = response.data || [];
+      if (papers.length === 0) {
         tbody.innerHTML = '<tr><td colspan="4" class="admin-table__empty">No research papers found</td></tr>';
         return;
       }
       var rows = '';
-      snapshot.forEach(function(doc) {
-        var d = doc.data();
+      papers.forEach(function(d) {
         var status = d.status || 'draft';
         var authors = (d.authors || []).join(', ') || 'N/A';
         rows += '<tr>' +
@@ -66,8 +66,8 @@
           '<td>' + AdminUtils.escapeHtml(AdminUtils.truncate(authors, 40)) + '</td>' +
           '<td><span class="admin-badge admin-badge--' + status + '">' + status.charAt(0).toUpperCase() + status.slice(1) + '</span></td>' +
           '<td class="admin-table__actions">' +
-            '<a href="#/research/edit/' + doc.id + '" class="admin-table__action-btn">Edit</a>' +
-            '<button class="admin-table__action-btn admin-table__action-btn--danger" data-delete="' + doc.id + '">Delete</button>' +
+            '<a href="#/research/edit/' + d.id + '" class="admin-table__action-btn">Edit</a>' +
+            '<button class="admin-table__action-btn admin-table__action-btn--danger" data-delete="' + d.id + '">Delete</button>' +
           '</td>' +
         '</tr>';
       });
@@ -78,7 +78,7 @@
           var docId = btn.getAttribute('data-delete');
           AdminUtils.confirm('Delete Paper', 'Are you sure? This cannot be undone.').then(function(ok) {
             if (ok) {
-              window.db.collection('research').doc(docId).delete().then(function() {
+              KatlaAPI.research.delete(docId).then(function() {
                 AdminUtils.showToast('Paper deleted');
                 AdminResearch.loadList();
               }).catch(function(err) { AdminUtils.showToast('Error: ' + err.message, 'error'); });
@@ -299,9 +299,9 @@
 
     // Load if editing
     if (isEdit) {
-      window.db.collection('research').doc(id).get().then(function(doc) {
-        if (!doc.exists) { AdminUtils.showToast('Not found', 'error'); AdminRouter.navigate('/research'); return; }
-        var d = doc.data();
+      KatlaAPI.research.get(id).then(function(response) {
+        var d = response.data;
+        if (!d) { AdminUtils.showToast('Not found', 'error'); AdminRouter.navigate('/research'); return; }
         document.getElementById('resTitle').value = d.title || '';
         document.getElementById('resSlug').value = d.slug || '';
         document.getElementById('resSlug').dataset.manual = 'true';
@@ -313,6 +313,9 @@
         if (d.tags && d.tags.length) { tags = d.tags.slice(); renderTags(); }
         if (d.featuredImage) { imageUrl = d.featuredImage; showImagePreview(imageUrl); }
         if (d.pdfUrl) { pdfUrl = d.pdfUrl; showPdfPreview(pdfUrl, d.pdfName || 'document.pdf'); }
+      }).catch(function(err) {
+        AdminUtils.showToast('Error: ' + err.message, 'error');
+        AdminRouter.navigate('/research');
       });
     }
 
@@ -334,16 +337,14 @@
         featuredImage: imageUrl,
         pdfUrl: pdfUrl,
         content: DOMPurify.sanitize(AdminEditor.getContent()),
-        status: document.getElementById('resStatus').checked ? 'published' : 'draft',
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        status: document.getElementById('resStatus').checked ? 'published' : 'draft'
       };
 
       var promise;
       if (isEdit) {
-        promise = window.db.collection('research').doc(id).update(data);
+        promise = KatlaAPI.research.update(id, data);
       } else {
-        data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-        promise = window.db.collection('research').add(data);
+        promise = KatlaAPI.research.create(data);
       }
 
       promise.then(function() {
