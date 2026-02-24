@@ -52,19 +52,19 @@
     var tbody = document.getElementById('caseStudiesTableBody');
     if (!tbody) return;
 
-    var query = window.db.collection('caseStudies').orderBy('createdAt', 'desc');
+    var params = {};
     if (currentFilter !== 'all') {
-      query = query.where('status', '==', currentFilter);
+      params.status = currentFilter;
     }
 
-    query.get().then(function(snapshot) {
-      if (snapshot.empty) {
+    KatlaAPI.caseStudies.adminList(params).then(function(response) {
+      var studies = response.data || [];
+      if (studies.length === 0) {
         tbody.innerHTML = '<tr><td colspan="5" class="admin-table__empty">No case studies found</td></tr>';
         return;
       }
       var rows = '';
-      snapshot.forEach(function(doc) {
-        var d = doc.data();
+      studies.forEach(function(d) {
         var status = d.status || 'draft';
         rows += '<tr>' +
           '<td><strong>' + AdminUtils.escapeHtml(AdminUtils.truncate(d.title || 'Untitled', 50)) + '</strong></td>' +
@@ -72,8 +72,8 @@
           '<td>' + AdminUtils.escapeHtml(d.category || 'N/A') + '</td>' +
           '<td><span class="admin-badge admin-badge--' + status + '">' + status.charAt(0).toUpperCase() + status.slice(1) + '</span></td>' +
           '<td class="admin-table__actions">' +
-            '<a href="#/case-studies/edit/' + doc.id + '" class="admin-table__action-btn">Edit</a>' +
-            '<button class="admin-table__action-btn admin-table__action-btn--danger" data-delete="' + doc.id + '">Delete</button>' +
+            '<a href="#/case-studies/edit/' + d.id + '" class="admin-table__action-btn">Edit</a>' +
+            '<button class="admin-table__action-btn admin-table__action-btn--danger" data-delete="' + d.id + '">Delete</button>' +
           '</td>' +
         '</tr>';
       });
@@ -84,7 +84,7 @@
           var docId = btn.getAttribute('data-delete');
           AdminUtils.confirm('Delete Case Study', 'Are you sure? This cannot be undone.').then(function(ok) {
             if (ok) {
-              window.db.collection('caseStudies').doc(docId).delete().then(function() {
+              KatlaAPI.caseStudies.delete(docId).then(function() {
                 AdminUtils.showToast('Case study deleted');
                 AdminCaseStudies.loadList();
               }).catch(function(err) {
@@ -286,9 +286,9 @@
 
     // Load data if editing
     if (isEdit) {
-      window.db.collection('caseStudies').doc(id).get().then(function(doc) {
-        if (!doc.exists) { AdminUtils.showToast('Not found', 'error'); AdminRouter.navigate('/case-studies'); return; }
-        var d = doc.data();
+      KatlaAPI.caseStudies.get(id).then(function(response) {
+        var d = response.data;
+        if (!d) { AdminUtils.showToast('Not found', 'error'); AdminRouter.navigate('/case-studies'); return; }
         document.getElementById('csTitle').value = d.title || '';
         document.getElementById('csSlug').value = d.slug || '';
         document.getElementById('csSlug').dataset.manual = 'true';
@@ -303,6 +303,9 @@
         if (d.metrics && d.metrics.length) { metrics = d.metrics.slice(); renderMetrics(); }
         if (d.technologies && d.technologies.length) { techs = d.technologies.slice(); renderTechs(); }
         if (d.featuredImage) { imageUrl = d.featuredImage; showPreview(imageUrl); }
+      }).catch(function(err) {
+        AdminUtils.showToast('Error: ' + err.message, 'error');
+        AdminRouter.navigate('/case-studies');
       });
     }
 
@@ -332,16 +335,14 @@
         content: DOMPurify.sanitize(AdminEditor.getContent()),
         order: parseInt(document.getElementById('csOrder').value) || 0,
         status: document.getElementById('csStatus').checked ? 'published' : 'draft',
-        featured: document.getElementById('csFeatured').checked,
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        featured: document.getElementById('csFeatured').checked
       };
 
       var promise;
       if (isEdit) {
-        promise = window.db.collection('caseStudies').doc(id).update(data);
+        promise = KatlaAPI.caseStudies.update(id, data);
       } else {
-        data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-        promise = window.db.collection('caseStudies').add(data);
+        promise = KatlaAPI.caseStudies.create(data);
       }
 
       promise.then(function() {

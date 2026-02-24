@@ -55,19 +55,19 @@
     var tbody = document.getElementById('postsTableBody');
     if (!tbody) return;
 
-    var query = window.db.collection('posts').orderBy('createdAt', 'desc');
+    var params = {};
     if (currentFilter !== 'all') {
-      query = query.where('status', '==', currentFilter);
+      params.status = currentFilter;
     }
 
-    query.get().then(function(snapshot) {
-      if (snapshot.empty) {
+    KatlaAPI.posts.adminList(params).then(function(response) {
+      var posts = response.data || [];
+      if (posts.length === 0) {
         tbody.innerHTML = '<tr><td colspan="5" class="admin-table__empty">No posts found</td></tr>';
         return;
       }
       var rows = '';
-      snapshot.forEach(function(doc) {
-        var d = doc.data();
+      posts.forEach(function(d) {
         var status = d.status || 'draft';
         rows += '<tr>' +
           '<td><strong>' + AdminUtils.escapeHtml(AdminUtils.truncate(d.title || 'Untitled', 50)) + '</strong></td>' +
@@ -75,8 +75,8 @@
           '<td><span class="admin-badge admin-badge--' + status + '">' + status.charAt(0).toUpperCase() + status.slice(1) + '</span></td>' +
           '<td>' + AdminUtils.formatDate(d.createdAt) + '</td>' +
           '<td class="admin-table__actions">' +
-            '<a href="#/posts/edit/' + doc.id + '" class="admin-table__action-btn">Edit</a>' +
-            '<button class="admin-table__action-btn admin-table__action-btn--danger" data-delete="' + doc.id + '">Delete</button>' +
+            '<a href="#/posts/edit/' + d.id + '" class="admin-table__action-btn">Edit</a>' +
+            '<button class="admin-table__action-btn admin-table__action-btn--danger" data-delete="' + d.id + '">Delete</button>' +
           '</td>' +
         '</tr>';
       });
@@ -87,7 +87,7 @@
           var docId = btn.getAttribute('data-delete');
           AdminUtils.confirm('Delete Post', 'Are you sure you want to delete this post? This cannot be undone.').then(function(ok) {
             if (ok) {
-              window.db.collection('posts').doc(docId).delete().then(function() {
+              KatlaAPI.posts.delete(docId).then(function() {
                 AdminUtils.showToast('Post deleted');
                 AdminPosts.loadList();
               }).catch(function(err) {
@@ -291,13 +291,13 @@
 
     // Load existing data if editing
     if (isEdit) {
-      window.db.collection('posts').doc(id).get().then(function(doc) {
-        if (!doc.exists) {
+      KatlaAPI.posts.get(id).then(function(response) {
+        var d = response.data;
+        if (!d) {
           AdminUtils.showToast('Post not found', 'error');
           AdminRouter.navigate('/posts');
           return;
         }
-        var d = doc.data();
         document.getElementById('postTitle').value = d.title || '';
         document.getElementById('postSlug').value = d.slug || '';
         document.getElementById('postSlug').dataset.manual = 'true';
@@ -311,6 +311,9 @@
         if (d.content) AdminEditor.setContent(d.content);
         if (d.tags && d.tags.length) { tags = d.tags.slice(); renderTags(); }
         if (d.featuredImage) { imageUrl = d.featuredImage; showImagePreview(imageUrl); }
+      }).catch(function(err) {
+        AdminUtils.showToast('Error loading post: ' + err.message, 'error');
+        AdminRouter.navigate('/posts');
       });
     }
 
@@ -346,16 +349,14 @@
         content: DOMPurify.sanitize(content),
         readTime: parseInt(document.getElementById('postReadTime').value) || 1,
         status: document.getElementById('postStatus').checked ? 'published' : 'draft',
-        featured: document.getElementById('postFeatured').checked,
-        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        featured: document.getElementById('postFeatured').checked
       };
 
       var promise;
       if (isEdit) {
-        promise = window.db.collection('posts').doc(id).update(data);
+        promise = KatlaAPI.posts.update(id, data);
       } else {
-        data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-        promise = window.db.collection('posts').add(data);
+        promise = KatlaAPI.posts.create(data);
       }
 
       promise.then(function() {

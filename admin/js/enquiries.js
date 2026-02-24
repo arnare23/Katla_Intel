@@ -49,24 +49,23 @@
     var tbody = document.getElementById('enquiriesTableBody');
     if (!tbody) return;
 
-    var query = window.db.collection('enquiries').orderBy('createdAt', 'desc');
-
+    var params = {};
     if (currentFilter !== 'all') {
-      query = query.where('status', '==', currentFilter);
+      params.status = currentFilter;
     }
 
-    query.get().then(function(snapshot) {
-      if (snapshot.empty) {
+    KatlaAPI.enquiries.list(params).then(function(response) {
+      var enquiries = response.data || [];
+      if (enquiries.length === 0) {
         tbody.innerHTML = '<tr><td colspan="5" class="admin-table__empty">No enquiries found</td></tr>';
         return;
       }
 
       var rows = '';
-      snapshot.forEach(function(doc) {
-        var d = doc.data();
+      enquiries.forEach(function(d) {
         var isUnread = !d.status || d.status === 'new';
         var status = d.status || 'new';
-        rows += '<tr class="admin-table__row--clickable ' + (isUnread ? 'admin-table__row--unread' : '') + '" data-id="' + doc.id + '">' +
+        rows += '<tr class="admin-table__row--clickable ' + (isUnread ? 'admin-table__row--unread' : '') + '" data-id="' + d.id + '">' +
           '<td>' + AdminUtils.escapeHtml(d.name || 'Unknown') + '</td>' +
           '<td>' + AdminUtils.escapeHtml(d.email || '') + '</td>' +
           '<td>' + AdminUtils.escapeHtml(d.service || 'General') + '</td>' +
@@ -90,13 +89,13 @@
     container.innerHTML = '';
     AdminUtils.setLoading(container, true);
 
-    window.db.collection('enquiries').doc(id).get().then(function(doc) {
-      if (!doc.exists) {
+    KatlaAPI.enquiries.get(id).then(function(response) {
+      var d = response.data;
+      if (!d) {
         container.innerHTML = '<div class="admin-empty"><p class="admin-empty__text">Enquiry not found</p></div>';
         return;
       }
 
-      var d = doc.data();
       var status = d.status || 'new';
 
       var html = '<a href="#/enquiries" class="admin-back-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Back to Enquiries</a>' +
@@ -147,10 +146,7 @@
       container.querySelectorAll('[data-status]').forEach(function(btn) {
         btn.addEventListener('click', function() {
           var newStatus = btn.getAttribute('data-status');
-          window.db.collection('enquiries').doc(id).update({
-            status: newStatus,
-            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-          }).then(function() {
+          KatlaAPI.enquiries.update(id, { status: newStatus }).then(function() {
             AdminUtils.showToast('Status updated to ' + newStatus);
             AdminEnquiries.renderDetail(container, id);
             if (window.AdminApp && window.AdminApp.updateEnquiryBadge) {
@@ -165,26 +161,18 @@
       // Save notes
       document.getElementById('saveNotesBtn').addEventListener('click', function() {
         var notes = document.getElementById('enquiryNotes').value;
-        window.db.collection('enquiries').doc(id).update({
-          notes: notes,
-          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-        }).then(function() {
+        KatlaAPI.enquiries.update(id, { notes: notes }).then(function() {
           AdminUtils.showToast('Notes saved');
         }).catch(function(err) {
           AdminUtils.showToast('Error: ' + err.message, 'error');
         });
       });
 
-      // Auto mark as read
+      // Server auto-marks as read via the GET endpoint, so just update badge
       if (status === 'new') {
-        window.db.collection('enquiries').doc(id).update({
-          status: 'read',
-          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-        }).then(function() {
-          if (window.AdminApp && window.AdminApp.updateEnquiryBadge) {
-            window.AdminApp.updateEnquiryBadge();
-          }
-        });
+        if (window.AdminApp && window.AdminApp.updateEnquiryBadge) {
+          window.AdminApp.updateEnquiryBadge();
+        }
       }
     }).catch(function(err) {
       container.innerHTML = '<div class="admin-empty"><p class="admin-empty__text">Error: ' + AdminUtils.escapeHtml(err.message) + '</p></div>';
