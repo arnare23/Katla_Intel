@@ -160,8 +160,8 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
-    initForm();
-    initAccordion();
-  });
+  // skeleton.js loads this script after all sections are already in the DOM,
+  // so DOMContentLoaded has already fired — run immediately.
+  initForm();
+  initAccordion();
 })();
