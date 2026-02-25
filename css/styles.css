@@ -921,7 +921,30 @@ p:last-child {
 
 .navbar__cta {
   margin-left: var(--space-sm);
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: 0.4rem 1.1rem;
+}
+
+.navbar__cta.btn:hover {
+  background-color: var(--color-accent);
   color: var(--color-white);
+  border-color: var(--color-accent);
+  transform: none;
+  box-shadow: none;
+}
+
+.navbar__cta.btn:active {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  transform: none;
+}
+
+/* Hide the underline pseudo-element on the CTA */
+.navbar__cta::after {
+  display: none;
 }
 
 /* Hamburger */
