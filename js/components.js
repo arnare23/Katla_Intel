@@ -8,17 +8,18 @@
     '<nav class="navbar" id="navbar">' +
       '<div class="navbar__inner">' +
         '<a href="/" class="navbar__logo">' +
+          '<img src="/assets/images/logo.svg" alt="Katla Intel" />' +
           '<span>Katla Intel</span>' +
         '</a>' +
         '<ul class="navbar__menu" id="navMenu">' +
           '<li><a href="/" class="navbar__link">Home</a></li>' +
-          '<li><a href="/pages/about" class="navbar__link">About</a></li>' +
-          '<li><a href="/pages/services" class="navbar__link">Services</a></li>' +
-          '<li><a href="/pages/case-studies" class="navbar__link">Case Studies</a></li>' +
-          '<li><a href="/pages/blog" class="navbar__link">Blog</a></li>' +
-          '<li><a href="/pages/research" class="navbar__link">Research</a></li>' +
-          '<li><a href="/pages/careers" class="navbar__link">Careers</a></li>' +
-          '<li><a href="/pages/contact" class="navbar__link navbar__cta btn btn--primary btn--small">Contact</a></li>' +
+          '<li><a href="/pages/about.html" class="navbar__link">About</a></li>' +
+          '<li><a href="/pages/services.html" class="navbar__link">Services</a></li>' +
+          '<li><a href="/pages/case-studies.html" class="navbar__link">Case Studies</a></li>' +
+          '<li><a href="/pages/blog.html" class="navbar__link">Blog</a></li>' +
+          '<li><a href="/pages/research.html" class="navbar__link">Research</a></li>' +
+          '<li><a href="/pages/careers.html" class="navbar__link">Careers</a></li>' +
+          '<li><a href="/pages/contact.html" class="navbar__link navbar__cta btn btn--primary btn--small">Contact</a></li>' +
         '</ul>' +
         '<button class="navbar__hamburger" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">' +
           '<span class="navbar__hamburger-line"></span>' +
@@ -27,13 +28,13 @@
         '</button>' +
         '<div class="navbar__mobile-menu" id="navMobileMenu">' +
           '<a href="/" class="navbar__mobile-link">Home</a>' +
-          '<a href="/pages/about" class="navbar__mobile-link">About</a>' +
-          '<a href="/pages/services" class="navbar__mobile-link">Services</a>' +
-          '<a href="/pages/case-studies" class="navbar__mobile-link">Case Studies</a>' +
-          '<a href="/pages/blog" class="navbar__mobile-link">Blog</a>' +
-          '<a href="/pages/research" class="navbar__mobile-link">Research</a>' +
-          '<a href="/pages/careers" class="navbar__mobile-link">Careers</a>' +
-          '<a href="/pages/contact" class="navbar__mobile-link navbar__mobile-cta btn btn--primary btn--full-width">Contact</a>' +
+          '<a href="/pages/about.html" class="navbar__mobile-link">About</a>' +
+          '<a href="/pages/services.html" class="navbar__mobile-link">Services</a>' +
+          '<a href="/pages/case-studies.html" class="navbar__mobile-link">Case Studies</a>' +
+          '<a href="/pages/blog.html" class="navbar__mobile-link">Blog</a>' +
+          '<a href="/pages/research.html" class="navbar__mobile-link">Research</a>' +
+          '<a href="/pages/careers.html" class="navbar__mobile-link">Careers</a>' +
+          '<a href="/pages/contact.html" class="navbar__mobile-link navbar__mobile-cta btn btn--primary btn--full-width">Contact</a>' +
         '</div>' +
         '<div class="navbar__overlay" id="navOverlay"></div>' +
       '</div>' +
@@ -51,7 +52,7 @@
         '<div class="footer__grid">' +
           '<div class="footer__brand">' +
             '<a href="/" class="footer__logo">' +
-              '<span>Katla Intel</span>' +
+              '<img src="/assets/images/logo.svg" alt="Katla Intel" />' +
             '</a>' +
             '<p class="footer__description">Custom neural network solutions that help businesses automate workflows, extract insights, and make smarter decisions.</p>' +
             '<div class="footer__social">' +
@@ -69,21 +70,21 @@
           '<div class="footer__column">' +
             '<h4 class="footer__heading">Services</h4>' +
             '<ul class="footer__links">' +
-              '<li><a href="/pages/services#service-deep-learning" class="footer__link">Deep Learning Models</a></li>' +
-              '<li><a href="/pages/services#service-automation" class="footer__link">Workflow Automation</a></li>' +
-              '<li><a href="/pages/services#service-file-management" class="footer__link">File Management</a></li>' +
-              '<li><a href="/pages/services#service-consulting" class="footer__link">Neural Network Consulting</a></li>' +
+              '<li><a href="/pages/services.html#service-deep-learning" class="footer__link">Deep Learning Models</a></li>' +
+              '<li><a href="/pages/services.html#service-automation" class="footer__link">Workflow Automation</a></li>' +
+              '<li><a href="/pages/services.html#service-file-management" class="footer__link">File Management</a></li>' +
+              '<li><a href="/pages/services.html#service-consulting" class="footer__link">Neural Network Consulting</a></li>' +
             '</ul>' +
           '</div>' +
           '<div class="footer__column">' +
             '<h4 class="footer__heading">Company</h4>' +
             '<ul class="footer__links">' +
-              '<li><a href="/pages/about" class="footer__link">About Us</a></li>' +
-              '<li><a href="/pages/case-studies" class="footer__link">Case Studies</a></li>' +
-              '<li><a href="/pages/blog" class="footer__link">Blog</a></li>' +
-              '<li><a href="/pages/research" class="footer__link">Research</a></li>' +
-              '<li><a href="/pages/careers" class="footer__link">Careers</a></li>' +
-              '<li><a href="/pages/contact" class="footer__link">Contact</a></li>' +
+              '<li><a href="/pages/about.html" class="footer__link">About Us</a></li>' +
+              '<li><a href="/pages/case-studies.html" class="footer__link">Case Studies</a></li>' +
+              '<li><a href="/pages/blog.html" class="footer__link">Blog</a></li>' +
+              '<li><a href="/pages/research.html" class="footer__link">Research</a></li>' +
+              '<li><a href="/pages/careers.html" class="footer__link">Careers</a></li>' +
+              '<li><a href="/pages/contact.html" class="footer__link">Contact</a></li>' +
             '</ul>' +
           '</div>' +
           '<div class="footer__column">' +

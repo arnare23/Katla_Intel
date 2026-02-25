@@ -104,18 +104,22 @@
 
   // Active nav link based on current page
   function initActiveNavLink() {
-    var currentPath = window.location.pathname;
-    // Normalize: strip trailing slash unless root
-    if (currentPath !== '/' && currentPath.endsWith('/')) {
-      currentPath = currentPath.slice(0, -1);
+    // Normalize a pathname: strip trailing slash and .html extension
+    function normalizePath(p) {
+      if (p !== '/' && p.endsWith('/')) {
+        p = p.slice(0, -1);
+      }
+      if (p.endsWith('.html')) {
+        p = p.slice(0, -5);
+      }
+      return p;
     }
+
+    var currentPath = normalizePath(window.location.pathname);
 
     // Desktop links
     document.querySelectorAll('.navbar__link').forEach(function(link) {
-      var linkPath = new URL(link.href).pathname;
-      if (linkPath !== '/' && linkPath.endsWith('/')) {
-        linkPath = linkPath.slice(0, -1);
-      }
+      var linkPath = normalizePath(new URL(link.href).pathname);
       if (currentPath === linkPath) {
         link.classList.add('navbar__link--active');
       }
@@ -123,10 +127,7 @@
 
     // Mobile links
     document.querySelectorAll('.navbar__mobile-link').forEach(function(link) {
-      var linkPath = new URL(link.href).pathname;
-      if (linkPath !== '/' && linkPath.endsWith('/')) {
-        linkPath = linkPath.slice(0, -1);
-      }
+      var linkPath = normalizePath(new URL(link.href).pathname);
       if (currentPath === linkPath) {
         link.classList.add('navbar__mobile-link--active');
       }

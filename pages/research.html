@@ -1,35 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Research &amp; Publications | Katla Intel - AI Solutions</title>
-  <meta name="description" content="Our latest research and technical insights on AI, deep learning, and applied machine learning from the Katla Intel team.">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Research & Publications | Katla Intel - AI Solutions">
-  <meta property="og:description" content="Our latest research and technical insights on AI, deep learning, and applied machine learning from the Katla Intel team.">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="en_US">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="../css/styles.css">
-
-  <!-- Favicon -->
-  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Our latest research and technical insights on AI, deep learning, and applied machine learning from the Katla Intel team.">
+    <meta property="og:title" content="Research & Publications | Katla Intelligence">
+    <meta property="og:description" content="Our latest research and technical insights on AI, deep learning, and applied machine learning from the Katla Intel team.">
+    <meta property="og:type" content="website">
+    <title>Research &amp; Publications | Katla Intelligence</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <!-- Skip Link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="navbar-root"></div>
 
-  <div id="navbar-root"></div>
-  <!-- Main Content -->
-  <main id="main-content">
+    <main id="main-content">
 
     <!-- Page Header -->
     <section class="page-header">
@@ -44,30 +33,29 @@
       </div>
     </section>
 
-    <!-- Research Grid -->
-    <section class="section section--light">
-      <div class="container">
-        <!-- Tag Filter Bar -->
-        <div class="filter-bar" id="research-filters" data-reveal="fade-up">
-          <!-- Filters populated dynamically -->
-        </div>
-
-        <!-- Research Cards Grid -->
-        <div class="blog-grid" id="research-grid">
-          <!-- Research loaded dynamically from Firestore -->
+    <!-- Coming Soon -->
+    <section class="section section--light" style="min-height: 60vh; display: flex; align-items: center;">
+      <div class="container" style="text-align: center;">
+        <div data-reveal="fade-up">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent); margin: 0 auto var(--space-xl);">
+            <path d="M10 2v6L4 18a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2l-6-10V2"/>
+            <line x1="8" y1="2" x2="16" y2="2"/>
+            <path d="M6.5 15h11"/>
+          </svg>
+          <h2 class="section__title" style="margin-bottom: var(--space-lg);">Coming Soon</h2>
+          <p class="section__subtitle" style="max-width: 500px; margin: 0 auto var(--space-2xl);">We're compiling our latest findings on AI and machine learning. Check back soon for technical insights and papers.</p>
+          <a href="/pages/contact.html" class="btn btn--primary btn--large">Get in Touch</a>
         </div>
       </div>
     </section>
 
-  </main>
+    </main>
 
-  <div id="footer-root"></div>
+    <div id="footer-root"></div>
 
-  <!-- Scripts -->
-  <script src="../js/components.js"></script>
-  <script src="../js/main.js"></script>
-  <script src="../js/animations.js"></script>
-  <script src="../js/api-client.js"></script>
-  <script src="../js/research-dynamic.js"></script>
+    <!-- Common scripts -->
+    <script src="/js/components.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/animations.js"></script>
 </body>
 </html>
