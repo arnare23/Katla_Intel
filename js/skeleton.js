@@ -17,6 +17,11 @@
   'use strict';
 
   var config = window.PAGE_CONFIG;
+  if (!config && window.getPageConfig) {
+    var p = window.location.pathname;
+    if (p !== '/' && p.charAt(p.length - 1) !== '/') p += '/';
+    config = window.getPageConfig(p);
+  }
   if (!config || !config.sections || !config.sections.length) return;
 
   var main = document.getElementById('main-content');
