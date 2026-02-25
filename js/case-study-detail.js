@@ -13,7 +13,11 @@
 
   function getCategoryBadgeClass(category) {
     var map = {
-      'Deep Learning': 'badge--blue',
+      'Forecasting': 'badge--blue',
+      'Clustering & Classification': 'badge--blue',
+      'Computer Vision': 'badge--blue',
+      'Control Models': 'badge--blue',
+      'Mixed Models': 'badge--blue',
       'Automation': 'badge--blue',
       'File Management': 'badge--gray',
       'Consulting': 'badge--green'

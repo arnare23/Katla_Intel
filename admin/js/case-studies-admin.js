@@ -4,7 +4,11 @@
   var AdminCaseStudies = {};
   var currentFilter = 'all';
   var CATEGORIES = [
-    { value: 'deep-learning', label: 'Deep Learning' },
+    { value: 'forecasting', label: 'Forecasting' },
+    { value: 'clustering', label: 'Clustering & Classification' },
+    { value: 'computer-vision', label: 'Computer Vision' },
+    { value: 'control', label: 'Control Models' },
+    { value: 'mixed-models', label: 'Mixed Models' },
     { value: 'automation', label: 'Automation' },
     { value: 'file-management', label: 'File Management' },
     { value: 'consulting', label: 'Consulting' }

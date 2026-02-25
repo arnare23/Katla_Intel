@@ -10,7 +10,11 @@
 
   var categoryMap = {
     'all': 'All',
-    'deep-learning': 'Deep Learning',
+    'forecasting': 'Forecasting',
+    'clustering': 'Clustering & Classification',
+    'computer-vision': 'Computer Vision',
+    'control': 'Control Models',
+    'mixed-models': 'Mixed Models',
     'automation': 'Automation',
     'file-management': 'File Management',
     'consulting': 'Consulting'
@@ -24,7 +28,11 @@
 
   function getCategoryBadgeClass(category) {
     var map = {
-      'Deep Learning': 'badge--blue',
+      'Forecasting': 'badge--blue',
+      'Clustering & Classification': 'badge--blue',
+      'Computer Vision': 'badge--blue',
+      'Control Models': 'badge--blue',
+      'Mixed Models': 'badge--blue',
       'Automation': 'badge--blue',
       'File Management': 'badge--gray',
       'Consulting': 'badge--green'

@@ -70,10 +70,12 @@
           '<div class="footer__column">' +
             '<h4 class="footer__heading">Services</h4>' +
             '<ul class="footer__links">' +
-              '<li><a href="/pages/services.html#service-deep-learning" class="footer__link">Deep Learning Models</a></li>' +
+              '<li><a href="/pages/services.html#service-forecasting" class="footer__link">Forecasting Models</a></li>' +
+              '<li><a href="/pages/services.html#service-clustering" class="footer__link">Clustering & Classification</a></li>' +
+              '<li><a href="/pages/services.html#service-computer-vision" class="footer__link">Computer Vision</a></li>' +
+              '<li><a href="/pages/services.html#service-control" class="footer__link">Control Models</a></li>' +
+              '<li><a href="/pages/services.html#service-mixed" class="footer__link">Mixed Models</a></li>' +
               '<li><a href="/pages/services.html#service-automation" class="footer__link">Workflow Automation</a></li>' +
-              '<li><a href="/pages/services.html#service-file-management" class="footer__link">File Management</a></li>' +
-              '<li><a href="/pages/services.html#service-consulting" class="footer__link">Neural Network Consulting</a></li>' +
             '</ul>' +
           '</div>' +
           '<div class="footer__column">' +
