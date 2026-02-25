@@ -1,9 +1,78 @@
 /**
  * Shared UI Components — Navbar & Footer
  * Injected synchronously into #navbar-root and #footer-root placeholders.
+ * Reads window.NAV_SECTIONS for dropdown menu data.
  */
 (function () {
-  /* ── Navbar ─────────────────────────────────────── */
+  var sections = window.NAV_SECTIONS || {};
+
+  var navItems = [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/pages/about/' },
+    { label: 'Services', href: '/pages/services/' },
+    { label: 'Case Studies', href: '/pages/case-studies/' },
+    { label: 'Blog', href: '/pages/blog/' },
+    { label: 'Research', href: '/pages/research/' },
+    { label: 'Careers', href: '/pages/careers/' },
+    { label: 'Contact', href: '/pages/contact/', isCta: true }
+  ];
+
+  /* ── Desktop Menu Items ────────────────────────── */
+  var menuHTML = '';
+  navItems.forEach(function (item) {
+    var pageSections = sections[item.href];
+    var hasDropdown = pageSections && pageSections.length > 0;
+
+    var liClass = 'navbar__item';
+    if (hasDropdown) liClass += ' navbar__item--has-dropdown';
+
+    var linkClass = 'navbar__link';
+    if (item.isCta) linkClass += ' navbar__cta btn btn--primary btn--small';
+
+    menuHTML += '<li class="' + liClass + '">';
+    menuHTML += '<a href="' + item.href + '" class="' + linkClass + '">' + item.label + '</a>';
+
+    if (hasDropdown) {
+      var dropdownClass = 'navbar__dropdown';
+      if (pageSections.length > 5) dropdownClass += ' navbar__dropdown--wide';
+      menuHTML += '<div class="' + dropdownClass + '">';
+      pageSections.forEach(function (sec) {
+        menuHTML += '<a href="' + item.href + '#' + sec.id + '" class="navbar__dropdown-link">' + sec.name + '</a>';
+      });
+      menuHTML += '</div>';
+    }
+
+    menuHTML += '</li>';
+  });
+
+  /* ── Mobile Menu Items ─────────────────────────── */
+  var mobileHTML = '';
+  navItems.forEach(function (item) {
+    var pageSections = sections[item.href];
+    var hasDropdown = pageSections && pageSections.length > 0;
+
+    if (hasDropdown) {
+      mobileHTML += '<div class="navbar__mobile-group">';
+      mobileHTML += '<div class="navbar__mobile-header">';
+      mobileHTML += '<a href="' + item.href + '" class="navbar__mobile-link">' + item.label + '</a>';
+      mobileHTML += '<button class="navbar__mobile-toggle" aria-label="Expand ' + item.label + ' sections" aria-expanded="false">';
+      mobileHTML += '<svg class="navbar__mobile-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+      mobileHTML += '</button>';
+      mobileHTML += '</div>';
+      mobileHTML += '<div class="navbar__mobile-dropdown">';
+      pageSections.forEach(function (sec) {
+        mobileHTML += '<a href="' + item.href + '#' + sec.id + '" class="navbar__mobile-sublink">' + sec.name + '</a>';
+      });
+      mobileHTML += '</div>';
+      mobileHTML += '</div>';
+    } else {
+      var linkClass = 'navbar__mobile-link';
+      if (item.isCta) linkClass += ' navbar__mobile-cta btn btn--primary btn--full-width';
+      mobileHTML += '<a href="' + item.href + '" class="' + linkClass + '">' + item.label + '</a>';
+    }
+  });
+
+  /* ── Navbar Assembly ───────────────────────────── */
   var navbarHTML =
     '<nav class="navbar" id="navbar">' +
       '<div class="navbar__inner">' +
@@ -11,31 +80,13 @@
           '<img src="/assets/images/logo.svg" alt="Katla Intel" />' +
           '<span>Katla Intel</span>' +
         '</a>' +
-        '<ul class="navbar__menu" id="navMenu">' +
-          '<li><a href="/" class="navbar__link">Home</a></li>' +
-          '<li><a href="/pages/about.html" class="navbar__link">About</a></li>' +
-          '<li><a href="/pages/services.html" class="navbar__link">Services</a></li>' +
-          '<li><a href="/pages/case-studies.html" class="navbar__link">Case Studies</a></li>' +
-          '<li><a href="/pages/blog.html" class="navbar__link">Blog</a></li>' +
-          '<li><a href="/pages/research.html" class="navbar__link">Research</a></li>' +
-          '<li><a href="/pages/careers.html" class="navbar__link">Careers</a></li>' +
-          '<li><a href="/pages/contact.html" class="navbar__link navbar__cta btn btn--primary btn--small">Contact</a></li>' +
-        '</ul>' +
+        '<ul class="navbar__menu" id="navMenu">' + menuHTML + '</ul>' +
         '<button class="navbar__hamburger" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">' +
           '<span class="navbar__hamburger-line"></span>' +
           '<span class="navbar__hamburger-line"></span>' +
           '<span class="navbar__hamburger-line"></span>' +
         '</button>' +
-        '<div class="navbar__mobile-menu" id="navMobileMenu">' +
-          '<a href="/" class="navbar__mobile-link">Home</a>' +
-          '<a href="/pages/about.html" class="navbar__mobile-link">About</a>' +
-          '<a href="/pages/services.html" class="navbar__mobile-link">Services</a>' +
-          '<a href="/pages/case-studies.html" class="navbar__mobile-link">Case Studies</a>' +
-          '<a href="/pages/blog.html" class="navbar__mobile-link">Blog</a>' +
-          '<a href="/pages/research.html" class="navbar__mobile-link">Research</a>' +
-          '<a href="/pages/careers.html" class="navbar__mobile-link">Careers</a>' +
-          '<a href="/pages/contact.html" class="navbar__mobile-link navbar__mobile-cta btn btn--primary btn--full-width">Contact</a>' +
-        '</div>' +
+        '<div class="navbar__mobile-menu" id="navMobileMenu">' + mobileHTML + '</div>' +
         '<div class="navbar__overlay" id="navOverlay"></div>' +
       '</div>' +
     '</nav>';
@@ -45,7 +96,7 @@
     navbarRoot.innerHTML = navbarHTML;
   }
 
-  /* ── Footer ─────────────────────────────────────── */
+  /* ── Footer (unchanged) ────────────────────────── */
   var footerHTML =
     '<footer class="footer">' +
       '<div class="container">' +
@@ -70,23 +121,23 @@
           '<div class="footer__column">' +
             '<h4 class="footer__heading">Services</h4>' +
             '<ul class="footer__links">' +
-              '<li><a href="/pages/services.html#service-forecasting" class="footer__link">Forecasting Models</a></li>' +
-              '<li><a href="/pages/services.html#service-clustering" class="footer__link">Clustering & Classification</a></li>' +
-              '<li><a href="/pages/services.html#service-computer-vision" class="footer__link">Computer Vision</a></li>' +
-              '<li><a href="/pages/services.html#service-control" class="footer__link">Control Models</a></li>' +
-              '<li><a href="/pages/services.html#service-mixed" class="footer__link">Mixed Models</a></li>' +
-              '<li><a href="/pages/services.html#service-automation" class="footer__link">Workflow Automation</a></li>' +
+              '<li><a href="/pages/services/#service-forecasting" class="footer__link">Forecasting Models</a></li>' +
+              '<li><a href="/pages/services/#service-clustering" class="footer__link">Clustering & Classification</a></li>' +
+              '<li><a href="/pages/services/#service-computer-vision" class="footer__link">Computer Vision</a></li>' +
+              '<li><a href="/pages/services/#service-control" class="footer__link">Control Models</a></li>' +
+              '<li><a href="/pages/services/#service-mixed" class="footer__link">Mixed Models</a></li>' +
+              '<li><a href="/pages/services/#service-automation" class="footer__link">Workflow Automation</a></li>' +
             '</ul>' +
           '</div>' +
           '<div class="footer__column">' +
             '<h4 class="footer__heading">Company</h4>' +
             '<ul class="footer__links">' +
-              '<li><a href="/pages/about.html" class="footer__link">About Us</a></li>' +
-              '<li><a href="/pages/case-studies.html" class="footer__link">Case Studies</a></li>' +
-              '<li><a href="/pages/blog.html" class="footer__link">Blog</a></li>' +
-              '<li><a href="/pages/research.html" class="footer__link">Research</a></li>' +
-              '<li><a href="/pages/careers.html" class="footer__link">Careers</a></li>' +
-              '<li><a href="/pages/contact.html" class="footer__link">Contact</a></li>' +
+              '<li><a href="/pages/about/" class="footer__link">About Us</a></li>' +
+              '<li><a href="/pages/case-studies/" class="footer__link">Case Studies</a></li>' +
+              '<li><a href="/pages/blog/" class="footer__link">Blog</a></li>' +
+              '<li><a href="/pages/research/" class="footer__link">Research</a></li>' +
+              '<li><a href="/pages/careers/" class="footer__link">Careers</a></li>' +
+              '<li><a href="/pages/contact/" class="footer__link">Contact</a></li>' +
             '</ul>' +
           '</div>' +
           '<div class="footer__column">' +

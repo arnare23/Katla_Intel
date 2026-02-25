@@ -1018,6 +1018,148 @@ p:last-child {
   visibility: visible;
 }
 
+/* --- 6.1 Navbar Dropdowns --- */
+
+/* Desktop dropdown container */
+.navbar__item {
+  position: relative;
+}
+
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-xs));
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 220px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: var(--space-sm) 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-fast), visibility var(--transition-fast), transform var(--transition-fast);
+  transform: translateX(-50%) translateY(4px);
+  z-index: calc(var(--z-navbar) + 1);
+  pointer-events: none;
+}
+
+/* Bridge element to prevent gap between link and dropdown */
+.navbar__item--has-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: var(--space-xs);
+}
+
+.navbar__item--has-dropdown:hover .navbar__dropdown,
+.navbar__item--has-dropdown.navbar__item--dropdown-open .navbar__dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* Suppress dropdown after clicking a section link (until mouse leaves) */
+.navbar__item--dropdown-locked .navbar__dropdown {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Wide dropdown for Services (2-column grid) */
+.navbar__dropdown--wide {
+  min-width: 380px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: var(--space-md) 0;
+}
+
+/* Individual dropdown link */
+.navbar__dropdown-link {
+  display: block;
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.navbar__dropdown-link:hover {
+  color: var(--color-accent);
+  background-color: var(--color-bg-accent);
+}
+
+/* Mobile accordion group */
+.navbar__mobile-group {
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.navbar__mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__mobile-header .navbar__mobile-link {
+  flex: 1;
+  border-bottom: none;
+}
+
+.navbar__mobile-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.navbar__mobile-toggle:hover {
+  color: var(--color-accent);
+}
+
+.navbar__mobile-chevron {
+  transition: transform var(--transition-base);
+}
+
+.navbar__mobile-toggle[aria-expanded="true"] .navbar__mobile-chevron {
+  transform: rotate(180deg);
+}
+
+/* Mobile sub-menu (hidden by default) */
+.navbar__mobile-dropdown {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-base);
+}
+
+.navbar__mobile-dropdown.is-open {
+  max-height: 500px;
+}
+
+.navbar__mobile-sublink {
+  display: block;
+  padding: var(--space-sm) 0 var(--space-sm) var(--space-xl);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.navbar__mobile-sublink:hover {
+  color: var(--color-accent);
+}
+
 /* ---------------------------------------------------------
    7. FOOTER
    --------------------------------------------------------- */
@@ -2598,6 +2740,7 @@ p:last-child {
   .navbar__hamburger { display: none; }
   .navbar__mobile-menu { display: none; }
   .navbar__overlay { display: none; }
+  .navbar__mobile-group { display: none; }
 
   /* Hero */
   .hero__title { font-size: var(--font-size-4xl); }
