@@ -12,6 +12,7 @@ window.NAV_SECTIONS = {
     { id: 'approach', name: 'How We Work' }
   ],
   '/pages/services/': [
+    { id: 'services-overview', name: 'Our Services' },
     { id: 'service-forecasting', name: 'Forecasting Models' },
     { id: 'service-clustering', name: 'Clustering & Classification' },
     { id: 'service-computer-vision', name: 'Computer Vision' },
