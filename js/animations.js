@@ -74,9 +74,17 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
+  // Support both static loading (DOMContentLoaded) and dynamic loading
+  // via skeleton.js (script appended after sections are injected)
+  function init() {
     initStagger();
     initReveal();
     initCounters();
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
