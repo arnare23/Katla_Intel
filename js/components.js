@@ -143,7 +143,7 @@
           '<div class="footer__column">' +
             '<h4 class="footer__heading">Contact</h4>' +
             '<ul class="footer__links">' +
-              '<li><a href="mailto:hello@katlaintel.is" class="footer__link">hello@katlaintel.is</a></li>' +
+              '<li><a href="mailto:info@katlaintel.is" class="footer__link">info@katlaintel.is</a></li>' +
               '<li><span class="footer__link">Reykjavik, Iceland</span></li>' +
             '</ul>' +
           '</div>' +
