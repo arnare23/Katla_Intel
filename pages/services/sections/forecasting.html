@@ -1,0 +1,67 @@
+    <section id="service-forecasting" class="section section--light">
+      <div class="container">
+        <div class="service-detail">
+          <div class="service-detail__content" data-reveal="fade-right">
+            <div class="service-detail__icon" style="width:56px;height:56px;display:flex;align-items:center;justify-content:center;background-color:var(--color-bg-accent);border-radius:var(--radius-lg);margin-bottom:var(--space-lg);color:var(--color-accent);">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h2 class="service-detail__title">Forecasting Models</h2>
+            <p class="service-detail__description">We build custom forecasting models that help businesses predict future trends with precision. From demand planning that optimizes supply chains to weather prediction systems that inform critical operations, our time series models transform historical data into actionable foresight.</p>
+            <div class="service-detail__use-cases">
+              <h3 class="service-detail__use-cases-title">Use Cases</h3>
+              <ul class="service-detail__use-case-list">
+                <li class="service-detail__use-case-item">Demand forecasting for retail and supply chain optimization</li>
+                <li class="service-detail__use-case-item">Weather prediction for agriculture and energy sectors</li>
+                <li class="service-detail__use-case-item">Financial market trend analysis and risk assessment</li>
+                <li class="service-detail__use-case-item">Resource planning and capacity forecasting</li>
+              </ul>
+            </div>
+            <div class="service-detail__tech">
+              <span class="badge badge--blue">PyTorch</span>
+              <span class="badge badge--blue">Time Series</span>
+              <span class="badge badge--blue">ARIMA</span>
+              <span class="badge badge--blue">Prophet</span>
+              <span class="badge badge--blue">Transformers</span>
+            </div>
+          </div>
+          <div class="service-detail__visual" data-reveal="fade-left">
+            <div class="service-visual service-visual--forecasting" aria-hidden="true">
+              <svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="forecastGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#2563eb;stop-opacity:0.2"/>
+                    <stop offset="100%" style="stop-color:#2563eb;stop-opacity:0.05"/>
+                  </linearGradient>
+                </defs>
+                <!-- Axes -->
+                <line x1="40" y1="240" x2="260" y2="240" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.3"/>
+                <line x1="40" y1="40" x2="40" y2="240" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.3"/>
+                <!-- Historical data line -->
+                <polyline points="50,200 80,180 110,190 140,150 170,160" stroke="#2563eb" stroke-width="2.5" stroke-opacity="0.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Data points -->
+                <circle cx="50" cy="200" r="4" fill="#2563eb" opacity="0.5"/>
+                <circle cx="80" cy="180" r="4" fill="#2563eb" opacity="0.5"/>
+                <circle cx="110" cy="190" r="4" fill="#2563eb" opacity="0.5"/>
+                <circle cx="140" cy="150" r="4" fill="#2563eb" opacity="0.5"/>
+                <circle cx="170" cy="160" r="4" fill="#2563eb" opacity="0.6"/>
+                <!-- Forecast line (dashed) -->
+                <polyline points="170,160 200,120 230,90 250,70" stroke="#2563eb" stroke-width="2" stroke-opacity="0.4" fill="none" stroke-dasharray="6 4" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Confidence band -->
+                <path d="M170,160 L200,100 L230,65 L250,40 L250,100 L230,115 L200,140 Z" fill="#2563eb" opacity="0.06"/>
+                <!-- Forecast points -->
+                <circle cx="200" cy="120" r="4" fill="#2563eb" opacity="0.3"/>
+                <circle cx="230" cy="90" r="4" fill="#2563eb" opacity="0.25"/>
+                <circle cx="250" cy="70" r="4" fill="#2563eb" opacity="0.2"/>
+                <!-- Labels -->
+                <text x="110" y="260" text-anchor="middle" fill="#2563eb" font-size="10" font-family="Inter, sans-serif" opacity="0.5">Historical</text>
+                <text x="220" y="260" text-anchor="middle" fill="#2563eb" font-size="10" font-family="Inter, sans-serif" opacity="0.5">Forecast</text>
+                <!-- Divider -->
+                <line x1="170" y1="50" x2="170" y2="240" stroke="#2563eb" stroke-width="1" stroke-opacity="0.15" stroke-dasharray="4 4"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

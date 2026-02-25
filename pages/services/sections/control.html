@@ -1,0 +1,73 @@
+    <section id="service-control" class="section section--gray">
+      <div class="container">
+        <div class="service-detail service-detail--reverse">
+          <div class="service-detail__content" data-reveal="fade-left">
+            <div class="service-detail__icon" style="width:56px;height:56px;display:flex;align-items:center;justify-content:center;background-color:var(--color-bg-accent);border-radius:var(--radius-lg);margin-bottom:var(--space-lg);color:var(--color-accent);">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" y1="21" x2="4" y2="14"/>
+                <line x1="4" y1="10" x2="4" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12" y2="3"/>
+                <line x1="20" y1="21" x2="20" y2="16"/>
+                <line x1="20" y1="12" x2="20" y2="3"/>
+                <line x1="1" y1="14" x2="7" y2="14"/>
+                <line x1="9" y1="8" x2="15" y2="8"/>
+                <line x1="17" y1="16" x2="23" y2="16"/>
+              </svg>
+            </div>
+            <h2 class="service-detail__title">Control Models</h2>
+            <p class="service-detail__description">We design control models that optimize decisions and automate complex operational processes. From inventory systems that dynamically balance supply and demand to automated machinery that adapts in real-time, our control solutions bring intelligence to the systems that run your business.</p>
+            <div class="service-detail__use-cases">
+              <h3 class="service-detail__use-cases-title">Use Cases</h3>
+              <ul class="service-detail__use-case-list">
+                <li class="service-detail__use-case-item">Inventory optimization and dynamic reordering</li>
+                <li class="service-detail__use-case-item">Automated machinery control and robotics</li>
+                <li class="service-detail__use-case-item">Process optimization in manufacturing</li>
+                <li class="service-detail__use-case-item">Energy management and load balancing</li>
+              </ul>
+            </div>
+            <div class="service-detail__tech">
+              <span class="badge badge--blue">Reinforcement Learning</span>
+              <span class="badge badge--blue">MPC</span>
+              <span class="badge badge--blue">PyTorch</span>
+              <span class="badge badge--blue">Optimization</span>
+              <span class="badge badge--blue">Simulation</span>
+            </div>
+          </div>
+          <div class="service-detail__visual" data-reveal="fade-right">
+            <div class="service-visual service-visual--control" aria-hidden="true">
+              <svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="controlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#2563eb;stop-opacity:0.15"/>
+                    <stop offset="100%" style="stop-color:#2563eb;stop-opacity:0.03"/>
+                  </linearGradient>
+                </defs>
+                <!-- Control loop -->
+                <rect x="90" y="40" width="100" height="40" rx="8" fill="url(#controlGrad)" stroke="#2563eb" stroke-width="1.5" class="service-visual__node"/>
+                <text x="140" y="64" text-anchor="middle" fill="#2563eb" font-size="10" font-family="Inter, sans-serif" font-weight="500">Controller</text>
+                <!-- Arrow down -->
+                <line x1="140" y1="80" x2="140" y2="110" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.3"/>
+                <polygon points="140,115 135,107 145,107" fill="#2563eb" opacity="0.3"/>
+                <!-- System block -->
+                <rect x="90" y="120" width="100" height="40" rx="8" fill="url(#controlGrad)" stroke="#2563eb" stroke-width="2" class="service-visual__node"/>
+                <text x="140" y="144" text-anchor="middle" fill="#2563eb" font-size="10" font-family="Inter, sans-serif" font-weight="500">System</text>
+                <!-- Arrow down -->
+                <line x1="140" y1="160" x2="140" y2="190" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.3"/>
+                <polygon points="140,195 135,187 145,187" fill="#2563eb" opacity="0.3"/>
+                <!-- Output/Sensor block -->
+                <rect x="90" y="200" width="100" height="40" rx="8" fill="url(#controlGrad)" stroke="#2563eb" stroke-width="1.5" class="service-visual__node"/>
+                <text x="140" y="224" text-anchor="middle" fill="#2563eb" font-size="10" font-family="Inter, sans-serif" font-weight="500">Sensors</text>
+                <!-- Feedback loop -->
+                <line x1="90" y1="220" x2="40" y2="220" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.2"/>
+                <line x1="40" y1="220" x2="40" y2="60" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.2"/>
+                <line x1="40" y1="60" x2="85" y2="60" stroke="#2563eb" stroke-width="1.5" stroke-opacity="0.2"/>
+                <polygon points="90,60 82,55 82,65" fill="#2563eb" opacity="0.3"/>
+                <!-- Feedback label -->
+                <text x="30" y="145" text-anchor="middle" fill="#2563eb" font-size="9" font-family="Inter, sans-serif" opacity="0.4" transform="rotate(-90 30 145)">Feedback</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
