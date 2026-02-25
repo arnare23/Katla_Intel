@@ -757,6 +757,10 @@ p:last-child {
   transition: max-height var(--transition-slow);
 }
 
+.accordion__item--open .accordion__content {
+  max-height: 300px;
+}
+
 .accordion__body {
   padding: 0 var(--space-xl) var(--space-lg);
   font-size: var(--font-size-sm);
