@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { requireAuth } from '../middleware/auth';
+import { verifyTurnstile } from '../lib/turnstile';
 import type { AppEnv } from '../types';
 
 // ---------------------------------------------------------------------------
@@ -10,6 +11,23 @@ export const publicEnquiries = new Hono<AppEnv>();
 
 publicEnquiries.post('/', async (c) => {
   const body = await c.req.json();
+
+  // Verify Turnstile token
+  const turnstileToken = body['cf-turnstile-response'];
+  if (!turnstileToken) {
+    return c.json({ error: 'Turnstile verification required' }, 400);
+  }
+
+  const remoteIp = c.req.header('CF-Connecting-IP') || undefined;
+  const turnstileOk = await verifyTurnstile(
+    turnstileToken,
+    c.env.TURNSTILE_SECRET_KEY,
+    remoteIp
+  );
+
+  if (!turnstileOk) {
+    return c.json({ error: 'Turnstile verification failed' }, 403);
+  }
 
   const errors: string[] = [];
   if (!body.name?.trim()) errors.push('name is required');

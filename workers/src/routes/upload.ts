@@ -50,7 +50,7 @@ adminUpload.post('/image', async (c) => {
   const sanitizedName = sanitizeFilename(file.name);
   const key = `images/${Date.now()}_${sanitizedName}`;
 
-  await c.env.ASSETS.put(key, file.stream(), {
+  await c.env.R2_BUCKET.put(key, file.stream(), {
     httpMetadata: {
       contentType: file.type,
     },
@@ -96,7 +96,7 @@ adminUpload.post('/pdf', async (c) => {
   const sanitizedName = sanitizeFilename(file.name);
   const key = `pdfs/${Date.now()}_${sanitizedName}`;
 
-  await c.env.ASSETS.put(key, file.stream(), {
+  await c.env.R2_BUCKET.put(key, file.stream(), {
     httpMetadata: {
       contentType: 'application/pdf',
     },
@@ -125,12 +125,12 @@ adminUpload.delete('/', async (c) => {
     return c.json({ error: 'Invalid file key' }, 400);
   }
 
-  const object = await c.env.ASSETS.head(body.key);
+  const object = await c.env.R2_BUCKET.head(body.key);
   if (!object) {
     return c.json({ error: 'File not found' }, 404);
   }
 
-  await c.env.ASSETS.delete(body.key);
+  await c.env.R2_BUCKET.delete(body.key);
 
   return c.json({ success: true });
 });

@@ -1,8 +1,9 @@
 export type Bindings = {
   DB: D1Database;
-  ASSETS: R2Bucket;
+  R2_BUCKET: R2Bucket;
   JWT_SECRET: string;
   CORS_ORIGIN: string;
+  TURNSTILE_SECRET_KEY: string;
 };
 
 export type Variables = {

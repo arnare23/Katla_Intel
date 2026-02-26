@@ -100,7 +100,8 @@
         email: form.querySelector('[name="email"]').value.trim(),
         company: (form.querySelector('[name="company"]') && form.querySelector('[name="company"]').value.trim()) || '',
         service: form.querySelector('[name="service"]').value,
-        message: form.querySelector('[name="message"]').value.trim()
+        message: form.querySelector('[name="message"]').value.trim(),
+        'cf-turnstile-response': (form.querySelector('[name="cf-turnstile-response"]') && form.querySelector('[name="cf-turnstile-response"]').value) || ''
       };
 
       // Submit to API
@@ -114,6 +115,9 @@
         .catch(function(err) {
           console.error('Error submitting form:', err);
           showFormError(form, submitBtn, submitBtnText);
+          if (typeof turnstile !== 'undefined') {
+            turnstile.reset();
+          }
         });
     });
   }

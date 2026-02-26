@@ -254,6 +254,23 @@
     var form = document.querySelector('.newsletter__form');
     if (!form) return;
 
+    // Render Turnstile widget
+    var submitBtn = form.querySelector('.btn');
+    var turnstileContainer = document.createElement('div');
+    turnstileContainer.id = 'newsletter-turnstile';
+    turnstileContainer.style.marginBottom = '12px';
+    if (submitBtn) {
+      form.insertBefore(turnstileContainer, submitBtn);
+    }
+
+    var turnstileWidgetId;
+    if (typeof turnstile !== 'undefined') {
+      turnstileWidgetId = turnstile.render('#newsletter-turnstile', {
+        sitekey: '0x4AAAAAACiQqRTN9YR1NVJC',
+        theme: 'light',
+      });
+    }
+
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       var emailInput = form.querySelector('.newsletter__input');
@@ -263,13 +280,27 @@
       var email = emailInput.value.trim();
       if (!email) return;
 
+      // Get Turnstile token
+      var turnstileToken = '';
+      if (typeof turnstile !== 'undefined' && turnstileWidgetId !== undefined) {
+        turnstileToken = turnstile.getResponse(turnstileWidgetId);
+      }
+      if (!turnstileToken) {
+        submitBtn.textContent = 'Please wait...';
+        setTimeout(function() { submitBtn.textContent = 'Subscribe'; }, 2000);
+        return;
+      }
+
       submitBtn.textContent = 'Subscribing...';
       submitBtn.disabled = true;
 
-      KatlaAPI.subscribers.subscribe(email, 'blog')
+      KatlaAPI.subscribers.subscribe(email, 'blog', turnstileToken)
       .then(function() {
         emailInput.value = '';
         submitBtn.textContent = 'Subscribed!';
+        if (typeof turnstile !== 'undefined' && turnstileWidgetId !== undefined) {
+          turnstile.reset(turnstileWidgetId);
+        }
         setTimeout(function() {
           submitBtn.textContent = 'Subscribe';
           submitBtn.disabled = false;
@@ -279,6 +310,9 @@
         console.error('Newsletter subscription error:', error);
         submitBtn.textContent = 'Error - Try Again';
         submitBtn.disabled = false;
+        if (typeof turnstile !== 'undefined' && turnstileWidgetId !== undefined) {
+          turnstile.reset(turnstileWidgetId);
+        }
         setTimeout(function() {
           submitBtn.textContent = 'Subscribe';
         }, 3000);

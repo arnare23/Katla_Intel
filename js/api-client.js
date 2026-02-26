@@ -211,8 +211,10 @@
     },
 
     subscribers: {
-      subscribe: function(email, source) {
-        return request('POST', '/subscribers', { email: email, source: source || 'blog' });
+      subscribe: function(email, source, turnstileToken) {
+        var body = { email: email, source: source || 'blog' };
+        if (turnstileToken) body['cf-turnstile-response'] = turnstileToken;
+        return request('POST', '/subscribers', body);
       },
       // Admin
       list: function() {

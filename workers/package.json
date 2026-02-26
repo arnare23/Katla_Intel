@@ -2,10 +2,10 @@
   "name": "katla-workers",
   "private": true,
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "db:migrate": "wrangler d1 execute katla-prod --file=schema.sql",
-    "db:seed": "wrangler d1 execute katla-prod --file=seed-admin.sql"
+    "dev": "wrangler dev --config=wrangler.toml",
+    "deploy": "wrangler deploy --config=wrangler.toml",
+    "db:migrate": "wrangler d1 execute katla-base --file=schema.sql --config=wrangler.toml",
+    "db:seed": "wrangler d1 execute katla-base --file=seed-admin.sql --config=wrangler.toml"
   },
   "dependencies": {
     "hono": "^4.0.0",
