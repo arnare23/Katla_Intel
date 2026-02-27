@@ -37,6 +37,12 @@
     'services.overview.card9.title': 'AI Chatbot Creation',
     'services.overview.card9.desc': 'Intelligent chatbots trained on your content, serving customers in multiple languages.',
     'services.overview.card9.link': 'Learn more &rarr;',
+    'services.overview.card10.title': 'Business Management Platform',
+    'services.overview.card10.desc': 'Personalized platforms that consolidate your operations into one intuitive system with real-time insights.',
+    'services.overview.card10.link': 'Learn more &rarr;',
+    'services.overview.card11.title': 'Custom Map Designs',
+    'services.overview.card11.desc': 'Bespoke maps and geospatial visualizations that turn location data into clear, compelling stories.',
+    'services.overview.card11.link': 'Learn more &rarr;',
     'services.overview.custom.title': "Got another idea? We're up for the challenge.",
     'services.overview.custom.desc': "We're forward-thinking and up for any challenge. If you have a problem that needs solving, let's talk.",
     'services.overview.custom.button': 'Get in Touch',
@@ -122,6 +128,24 @@
     'services.chatbot.useCase3': 'Internal helpdesk bots for HR, IT, and operations',
     'services.chatbot.useCase4': 'Lead qualification and sales assistant chatbots',
 
+    /* ── Business Management Platform ── */
+    'services.businessPlatform.title': 'Business Management Platform',
+    'services.businessPlatform.desc': 'We build personalized business management platforms tailored to how your organization actually works. From real-time dashboards and KPI tracking to integrated workflows and AI-driven insights, our platforms consolidate your operations into a single, intuitive system designed around your unique processes.',
+    'services.businessPlatform.useCasesTitle': 'Use Cases',
+    'services.businessPlatform.useCase1': 'Custom dashboards with real-time KPI monitoring and alerts',
+    'services.businessPlatform.useCase2': 'Integrated CRM, project management, and resource planning',
+    'services.businessPlatform.useCase3': 'Automated reporting and business intelligence insights',
+    'services.businessPlatform.useCase4': 'Role-based access control and multi-team collaboration tools',
+
+    /* ── Custom Map Designs ── */
+    'services.mapDesign.title': 'Custom Map Designs',
+    'services.mapDesign.desc': 'We create bespoke map designs and geospatial visualizations that turn location data into clear, compelling stories. From interactive web maps and route planning tools to custom cartographic styles and spatial analytics dashboards, our mapping solutions help you see your world with new clarity.',
+    'services.mapDesign.useCasesTitle': 'Use Cases',
+    'services.mapDesign.useCase1': 'Interactive maps for tourism, real estate, and logistics',
+    'services.mapDesign.useCase2': 'Custom cartographic styles and branded map themes',
+    'services.mapDesign.useCase3': 'Geospatial data analysis and location intelligence',
+    'services.mapDesign.useCase4': 'Route optimization and fleet tracking visualizations',
+
     /* ── Process ── */
     'services.process.label': 'How We Work',
     'services.process.title': 'Our Process',
@@ -194,6 +218,12 @@
     'services.overview.card9.title': 'Gervigreindarspiall',
     'services.overview.card9.desc': 'Greind spjallmenni \u00FEj\u00E1lfu\u00F0 \u00E1 efni \u00FE\u00EDnu, \u00FEj\u00F3na vi\u00F0skiptavinum \u00E1 m\u00F6rgum tungum\u00E1lum.',
     'services.overview.card9.link': 'Fr\u00E6\u00F0ast meira &rarr;',
+    'services.overview.card10.title': 'Rekstrarstj\u00F3rnunarkerfi',
+    'services.overview.card10.desc': 'S\u00E9rsni\u00F0in kerfi sem sameina rekstur \u00FE inn \u00ED eitt leitnilegt vi\u00F0m\u00F3t me\u00F0 raunt\u00EDma inns\u00FDn.',
+    'services.overview.card10.link': 'Fr\u00E6\u00F0ast meira &rarr;',
+    'services.overview.card11.title': 'S\u00E9rsni\u00F0in kortager\u00F0',
+    'services.overview.card11.desc': 'S\u00E9rsni\u00F0in kort og landfr\u00E6\u00F0ilegar sj\u00F3nmyndir sem breyta sta\u00F0setningarg\u00F6gnum \u00ED sk\u00FDrar s\u00F6gur.',
+    'services.overview.card11.link': 'Fr\u00E6\u00F0ast meira &rarr;',
     'services.overview.custom.title': 'Eigi\u00F0 \u00FEi\u00F0 a\u00F0ra hugmynd? Vi\u00F0 erum tilb\u00FAin.',
     'services.overview.custom.desc': 'Vi\u00F0 erum framsj\u00E1 og tilb\u00FAin a\u00F0 takast \u00E1 vi\u00F0 hverja \u00E1skorun. Ef \u00FEi\u00F0 eigi\u00F0 vandm\u00E1l sem \u00FEarf a\u00F0 leysa, h\u00F6fum samband.',
     'services.overview.custom.button': 'Hafa samband',
@@ -278,6 +308,24 @@
     'services.chatbot.useCase2': 'Fj\u00F6ltyngt samtalmenni fyrir al\u00FEj\u00F3\u00F0leg teymi',
     'services.chatbot.useCase3': 'Innri \u00FEj\u00F3nustumenni fyrir mannau\u00F0s-, uppl\u00FDsingatækni- og rekstrarsvi\u00F0',
     'services.chatbot.useCase4': 'Flokkun fyrirspurna og s\u00F6lua\u00F0sto\u00F0arspjallmenni',
+
+    /* ── Business Management Platform ── */
+    'services.businessPlatform.title': 'Rekstrarstj\u00F3rnunarkerfi',
+    'services.businessPlatform.desc': 'Vi\u00F0 sm\u00ED\u00F0um s\u00E9rsni\u00F0in rekstrarstj\u00F3rnunarkerfi sem mi\u00F0ast vi\u00F0 hvernig fyrirt\u00E6ki\u00F0 \u00FEitt starfar \u00ED raun. Fr\u00E1 raunt\u00EDma m\u00E6labor\u00F0um og lykilt\u00F6luv\u00F6ktun til sameinuddra verkferla og gervigreindarinns\u00FDnar \u2014 kerfi okkar sameina reksturinn \u00ED eitt leitnilegt vi\u00F0m\u00F3t hanna\u00F0 a\u00F0 \u00FE\u00EDnum ferlum.',
+    'services.businessPlatform.useCasesTitle': 'Notkunartilvik',
+    'services.businessPlatform.useCase1': 'S\u00E9rsni\u00F0in m\u00E6labor\u00F0 me\u00F0 raunt\u00EDma lykilt\u00F6luv\u00F6ktun og vi\u00F0v\u00F6runum',
+    'services.businessPlatform.useCase2': 'Sameinudd vi\u00F0skiptavinastj\u00F3rnun, verkefnastj\u00F3rnun og au\u00F0lindaskipulag',
+    'services.businessPlatform.useCase3': 'Sj\u00E1lfvirk sk\u00FDrsluger\u00F0 og vi\u00F0skipta\u00FEekkingardrifin inns\u00FDn',
+    'services.businessPlatform.useCase4': 'Hlutverkatengd a\u00F0gangsstj\u00F3rnun og samstarfst\u00F3l fyrir m\u00F6rg teymi',
+
+    /* ── Custom Map Designs ── */
+    'services.mapDesign.title': 'S\u00E9rsni\u00F0in kortager\u00F0',
+    'services.mapDesign.desc': 'Vi\u00F0 b\u00FAum til s\u00E9rsni\u00F0in kort og landfr\u00E6\u00F0ilegar sj\u00F3nmyndir sem breyta sta\u00F0setningarg\u00F6gnum \u00ED sk\u00FDrar og s\u00E1rfj\u00E1llegar s\u00F6gur. Fr\u00E1 gagnvirkum vefkortum og lei\u00F0arskipulagt\u00F3lum til s\u00E9rsni\u00F0innar kortast\u00EDla og landfr\u00E6\u00F0ilegra greiningarm\u00E6labor\u00F0a \u2014 kortalausnir okkar hj\u00E1lpa \u00FE\u00E9r a\u00F0 sj\u00E1 heiminn me\u00F0 n\u00FDjum augum.',
+    'services.mapDesign.useCasesTitle': 'Notkunartilvik',
+    'services.mapDesign.useCase1': 'Gagnvirk kort fyrir fer\u00F0a\u00FEj\u00F3nustu, fasteignir og flutninga',
+    'services.mapDesign.useCase2': 'S\u00E9rsni\u00F0inn kortast\u00EDll og vörumerkjamerkt korta\u00FEemu',
+    'services.mapDesign.useCase3': 'Landfr\u00E6\u00F0ileg gagnagreining og sta\u00F0setningargreind',
+    'services.mapDesign.useCase4': 'Hagr\u00E6\u00F0ing lei\u00F0a og sj\u00F3nmyndir \u00E1 b\u00EDlaflotarakningu',
 
     /* ── Process ── */
     'services.process.label': 'Hvernig vi\u00F0 vinnum',

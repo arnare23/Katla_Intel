@@ -42,6 +42,8 @@ window.PAGE_REGISTRY = {
       { url: '/pages/services/sections/file-management.html', nav: { id: 'service-file-management', name: 'File Management', i18nKey: 'navsec.services.fileManagement' } },
       { url: '/pages/services/sections/consulting.html', nav: { id: 'service-consulting', name: 'Neural Network Consulting', i18nKey: 'navsec.services.consulting' } },
       { url: '/pages/services/sections/chatbot.html', nav: { id: 'service-chatbot', name: 'AI Chatbot Creation', i18nKey: 'navsec.services.chatbot' } },
+      { url: '/pages/services/sections/business-platform.html', nav: { id: 'service-business-platform', name: 'Business Management Platform', i18nKey: 'navsec.services.businessPlatform' } },
+      { url: '/pages/services/sections/map-design.html', nav: { id: 'service-map-design', name: 'Custom Map Designs', i18nKey: 'navsec.services.mapDesign' } },
       { url: '/pages/services/sections/process.html' },
       { url: '/pages/services/sections/related-case-studies.html' },
       { url: '/pages/services/sections/cta.html' }

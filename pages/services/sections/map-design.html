@@ -1,0 +1,80 @@
+    <section id="service-map-design" class="section section--light">
+      <div class="container">
+        <div class="service-detail">
+          <div class="service-detail__content" data-reveal="fade-right">
+            <div class="service-detail__icon" style="width:56px;height:56px;display:flex;align-items:center;justify-content:center;background-color:var(--color-bg-accent);border-radius:var(--radius-lg);margin-bottom:var(--space-lg);color:var(--color-accent);">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
+                <line x1="8" y1="2" x2="8" y2="18"/>
+                <line x1="16" y1="6" x2="16" y2="22"/>
+              </svg>
+            </div>
+            <h2 class="service-detail__title" data-i18n="services.mapDesign.title">Custom Map Designs</h2>
+            <p class="service-detail__description" data-i18n="services.mapDesign.desc">We create bespoke map designs and geospatial visualizations that turn location data into clear, compelling stories. From interactive web maps and route planning tools to custom cartographic styles and spatial analytics dashboards, our mapping solutions help you see your world with new clarity.</p>
+            <div class="service-detail__use-cases">
+              <h3 class="service-detail__use-cases-title" data-i18n="services.mapDesign.useCasesTitle">Use Cases</h3>
+              <ul class="service-detail__use-case-list">
+                <li class="service-detail__use-case-item" data-i18n="services.mapDesign.useCase1">Interactive maps for tourism, real estate, and logistics</li>
+                <li class="service-detail__use-case-item" data-i18n="services.mapDesign.useCase2">Custom cartographic styles and branded map themes</li>
+                <li class="service-detail__use-case-item" data-i18n="services.mapDesign.useCase3">Geospatial data analysis and location intelligence</li>
+                <li class="service-detail__use-case-item" data-i18n="services.mapDesign.useCase4">Route optimization and fleet tracking visualizations</li>
+              </ul>
+            </div>
+            <div class="service-detail__tech">
+              <span class="badge badge--blue">GIS</span>
+              <span class="badge badge--blue">Cartography</span>
+              <span class="badge badge--blue">Data Visualization</span>
+              <span class="badge badge--blue">Geospatial</span>
+              <span class="badge badge--blue">Interactive</span>
+            </div>
+          </div>
+          <div class="service-detail__visual" data-reveal="fade-left">
+            <div class="service-visual service-visual--map-design" aria-hidden="true">
+              <svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Custom map illustration -->
+                <defs>
+                  <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#2563eb;stop-opacity:0.15"/>
+                    <stop offset="100%" style="stop-color:#2563eb;stop-opacity:0.03"/>
+                  </linearGradient>
+                </defs>
+                <!-- Map frame -->
+                <rect x="40" y="40" width="200" height="200" rx="12" fill="url(#mapGrad)" stroke="#2563eb" stroke-width="1.5" class="service-visual__node"/>
+                <!-- Terrain lines -->
+                <path d="M40 160 Q80 140 120 155 Q160 170 200 145 Q220 135 240 150" stroke="#2563eb" stroke-width="1" opacity="0.12" fill="none"/>
+                <path d="M40 180 Q90 165 130 175 Q170 185 210 168 Q230 160 240 170" stroke="#2563eb" stroke-width="1" opacity="0.08" fill="none"/>
+                <path d="M40 200 Q75 190 110 195 Q150 200 190 188 Q220 180 240 190" stroke="#2563eb" stroke-width="1" opacity="0.06" fill="none"/>
+                <!-- Grid lines -->
+                <line x1="40" y1="100" x2="240" y2="100" stroke="#2563eb" stroke-width="0.5" opacity="0.06"/>
+                <line x1="40" y1="140" x2="240" y2="140" stroke="#2563eb" stroke-width="0.5" opacity="0.06"/>
+                <line x1="100" y1="40" x2="100" y2="240" stroke="#2563eb" stroke-width="0.5" opacity="0.06"/>
+                <line x1="160" y1="40" x2="160" y2="240" stroke="#2563eb" stroke-width="0.5" opacity="0.06"/>
+                <!-- Road/route path -->
+                <path d="M70 220 Q90 180 110 160 Q130 140 155 120 Q175 105 200 80 Q215 65 220 55" stroke="#2563eb" stroke-width="2" opacity="0.25" fill="none" stroke-linecap="round"/>
+                <!-- Map pins -->
+                <circle cx="110" cy="160" r="8" fill="#2563eb" opacity="0.15" stroke="#2563eb" stroke-width="1.5" class="service-visual__node"/>
+                <circle cx="110" cy="160" r="3" fill="#2563eb" opacity="0.5"/>
+                <circle cx="155" cy="120" r="8" fill="#2563eb" opacity="0.15" stroke="#2563eb" stroke-width="1.5" class="service-visual__node"/>
+                <circle cx="155" cy="120" r="3" fill="#2563eb" opacity="0.5"/>
+                <circle cx="200" cy="80" r="10" fill="#2563eb" opacity="0.2" stroke="#2563eb" stroke-width="1.5" class="service-visual__node"/>
+                <circle cx="200" cy="80" r="4" fill="#2563eb" opacity="0.6"/>
+                <!-- Small pin -->
+                <circle cx="80" cy="100" r="5" fill="#2563eb" opacity="0.1" stroke="#2563eb" stroke-width="1" class="service-visual__node"/>
+                <circle cx="80" cy="100" r="2" fill="#2563eb" opacity="0.3"/>
+                <!-- Legend box -->
+                <rect x="50" y="50" width="50" height="30" rx="4" fill="url(#mapGrad)" stroke="#2563eb" stroke-width="1" class="service-visual__node"/>
+                <rect x="56" y="58" width="8" height="4" rx="1" fill="#2563eb" opacity="0.3"/>
+                <rect x="68" y="58" width="25" height="4" rx="2" fill="#2563eb" opacity="0.15"/>
+                <rect x="56" y="68" width="8" height="4" rx="1" fill="#2563eb" opacity="0.2"/>
+                <rect x="68" y="68" width="25" height="4" rx="2" fill="#2563eb" opacity="0.1"/>
+                <!-- Scale bar -->
+                <line x1="170" y1="225" x2="225" y2="225" stroke="#2563eb" stroke-width="1.5" opacity="0.2"/>
+                <line x1="170" y1="222" x2="170" y2="228" stroke="#2563eb" stroke-width="1" opacity="0.2"/>
+                <line x1="225" y1="222" x2="225" y2="228" stroke="#2563eb" stroke-width="1" opacity="0.2"/>
+                <text x="197" y="222" text-anchor="middle" fill="#2563eb" font-size="7" font-family="Inter, sans-serif" opacity="0.2">10 km</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>

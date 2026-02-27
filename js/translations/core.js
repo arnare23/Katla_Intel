@@ -31,6 +31,8 @@
     'navsec.services.fileManagement': 'File Management',
     'navsec.services.consulting': 'Neural Network Consulting',
     'navsec.services.chatbot': 'AI Chatbot Creation',
+    'navsec.services.businessPlatform': 'Business Management Platform',
+    'navsec.services.mapDesign': 'Custom Map Designs',
     'navsec.contact.form': 'Send a Message',
     'navsec.contact.faq': 'FAQ',
 
@@ -63,7 +65,7 @@
     /* ── Navigation ── */
     'nav.home': 'Heim',
     'nav.about': 'Um okkur',
-    'nav.services': '\u00DE j\u00F3nustur',
+    'nav.services': '\u00DEj\u00F3nustur',
     'nav.caseStudies': 'Verkefni',
     'nav.blog': 'Blogg',
     'nav.research': 'Ranns\u00F3knir',
@@ -76,7 +78,7 @@
     'navsec.about.values': 'Gildin okkar',
     'navsec.about.team': 'Stofnendurnir',
     'navsec.about.approach': 'Hvernig við vinnum',
-    'navsec.services.overview': '\u00DE j\u00F3nustur okkar',
+    'navsec.services.overview': '\u00DEj\u00F3nustur okkar',
     'navsec.services.forecasting': 'Sp\u00E1l\u00EDk\u00F6n',
     'navsec.services.clustering': 'Flokkun og a\u00F0greining',
     'navsec.services.computerVision': 'T\u00F6lvusj\u00F3n',
@@ -86,12 +88,14 @@
     'navsec.services.fileManagement': 'Skjala\u00FEj\u00F3nusta',
     'navsec.services.consulting': 'Tauganetr\u00E1\u00F0gj\u00F6f',
     'navsec.services.chatbot': 'Gervigreindarspi\u00E1ll',
+    'navsec.services.businessPlatform': 'Rekstrarstj\u00F3rnunarkerfi',
+    'navsec.services.mapDesign': 'S\u00E9rsni\u00F0in kortager\u00F0',
     'navsec.contact.form': 'Senda skilabo\u00F0',
     'navsec.contact.faq': 'Algengar spurningar',
 
     /* ── Footer ── */
     'footer.description': 'S\u00E9rsni\u00F0nar tauganetslausnir sem hj\u00E1lpa fyrirt\u00E6kjum a\u00F0 sj\u00E1lfvirkniv\u00E6\u00F0a verkferla, draga \u00FAt inns\u00FDn \u00FAr g\u00F6gnum og taka betri \u00E1kvar\u00F0anir.',
-    'footer.heading.services': '\u00DE j\u00F3nustur',
+    'footer.heading.services': '\u00DEj\u00F3nustur',
     'footer.heading.company': 'Fyrirt\u00E6ki\u00F0',
     'footer.heading.contact': 'Hafa samband',
     'footer.link.forecasting': 'Sp\u00E1l\u00EDk\u00F6n',
