@@ -103,7 +103,7 @@
 
     /* ── About : Team ── */
     'about.team.title': 'Meet the Founders',
-    'about.team.arnarE.role': 'Co-Founder &amp; CEO / Logo - Slut',
+    'about.team.arnarE.role': 'Co-Founder &amp; CEO',
     'about.team.arnarE.desc': 'Drives the strategic vision of Katla Intel, drawing on a strong background in financial engineering and quantitative modeling to identify high-impact AI opportunities across industries.',
     'about.team.arnarJ.role': 'Co-Founder &amp; CTO',
     'about.team.arnarJ.desc': 'Leads the technical development at Katla Intel, specializing in neural network architectures and computer vision. Passionate about translating research breakthroughs into reliable production systems.',
@@ -127,8 +127,8 @@
   window.KatlaI18n.registerTranslations('is', {
 
     /* ── Heim : Hero ── */
-    'home.hero.label': 'Gervigreindarlausnir fyrir fyrirtæki',
-    'home.hero.title': 'Greindar gervigreindarlausnir fyrir vöxt fyrirtækja',
+    'home.hero.label': 'Hágæða–Gervigreindarlausnir á öllum sviðum',
+    'home.hero.title': 'Hágæða Gervigreindarlausnir á öllum sviðum',
     'home.hero.subtitle': 'Við hönnum og byggjum sérsniðin tauganetskerfi sem hjálpa fyrirtækjum að sjálfvirknivæða verkferla, draga út innsýn úr gögnum og taka betri ákvarðanir.',
     'home.hero.cta1': 'Skoða þjónustur okkar',
     'home.hero.cta2': 'Hafa samband',
@@ -220,7 +220,7 @@
 
     /* ── Um okkur : Teymi ── */
     'about.team.title': 'Kynntu þér stofnendurna',
-    'about.team.arnarE.role': 'Meðstofnandi &amp; forstjóri / Logo - Slut',
+    'about.team.arnarE.role': 'Meðstofnandi &amp; forstjóri',
     'about.team.arnarE.desc': 'Stýrir stefnumótandi framtíðarsýn Katla Intel og nýtir sterkan bakgrunn í fjármálaverkfræði og megindlegri líkanagerð til að bera kennsl á áhrifaríka tækifæri í gervigreind þvert á atvinnugreinar.',
     'about.team.arnarJ.role': 'Meðstofnandi &amp; tæknistjóri',
     'about.team.arnarJ.desc': 'Leiðir tæknilega þróun hjá Katla Intel og sérhæfir sig í tauganetsarkitektúr og tölvusjón. Brennur fyrir því að umbreyta rannsóknaniðurstöðum í áreiðanleg framleiðslukerfi.',
