@@ -1,5 +1,4 @@
 import { Hono } from 'hono';
-import { requireAuth } from '../middleware/auth';
 import { verifyTurnstile } from '../lib/turnstile';
 import type { AppEnv } from '../types';
 
@@ -62,40 +61,4 @@ publicSubscribers.post('/', async (c) => {
     .run();
 
   return c.json({ message: 'Subscribed successfully' }, 201);
-});
-
-// ---------------------------------------------------------------------------
-// Admin routes  (mounted at /api/v1/admin/subscribers)
-// ---------------------------------------------------------------------------
-
-export const adminSubscribers = new Hono<AppEnv>();
-
-adminSubscribers.use('*', requireAuth);
-
-adminSubscribers.get('/', async (c) => {
-  const { results } = await c.env.DB.prepare(
-    'SELECT * FROM subscribers ORDER BY created_at DESC'
-  ).all();
-
-  return c.json({ data: results || [] });
-});
-
-adminSubscribers.delete('/:id', async (c) => {
-  const id = c.req.param('id');
-
-  const existing = await c.env.DB.prepare(
-    'SELECT id FROM subscribers WHERE id = ?'
-  )
-    .bind(id)
-    .first();
-
-  if (!existing) {
-    return c.json({ error: 'Subscriber not found' }, 404);
-  }
-
-  await c.env.DB.prepare('DELETE FROM subscribers WHERE id = ?')
-    .bind(id)
-    .run();
-
-  return c.json({ success: true });
 });

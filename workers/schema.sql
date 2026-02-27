@@ -1,12 +1,5 @@
 -- Katla Intel D1 Schema
--- Run with: wrangler d1 execute katla-prod --file=schema.sql
-
-CREATE TABLE IF NOT EXISTS admin_users (
-  id TEXT PRIMARY KEY,
-  email TEXT NOT NULL UNIQUE,
-  password_hash TEXT NOT NULL,
-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
-);
+-- Run with: wrangler d1 execute katla-base --file=schema.sql
 
 CREATE TABLE IF NOT EXISTS enquiries (
   id TEXT PRIMARY KEY,

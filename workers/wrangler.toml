@@ -11,9 +11,5 @@ binding = "DB"
 database_name = "katla-base"
 database_id = "a073a463-3439-48f7-8905-a238dcd11c81"
 
-[[r2_buckets]]
-binding = "R2_BUCKET"
-bucket_name = "katla-assets"
-
 [vars]
 CORS_ORIGIN = "https://katlagroup.com"

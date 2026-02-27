@@ -4,12 +4,10 @@
   "scripts": {
     "dev": "wrangler dev --config=wrangler.toml",
     "deploy": "wrangler deploy --config=wrangler.toml",
-    "db:migrate": "wrangler d1 execute katla-base --file=schema.sql --config=wrangler.toml",
-    "db:seed": "wrangler d1 execute katla-base --file=seed-admin.sql --config=wrangler.toml"
+    "db:migrate": "wrangler d1 execute katla-base --file=schema.sql --config=wrangler.toml"
   },
   "dependencies": {
-    "hono": "^4.0.0",
-    "jose": "^5.0.0"
+    "hono": "^4.0.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.0.0",
