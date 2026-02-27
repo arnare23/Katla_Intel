@@ -37,9 +37,9 @@
       .catch(function(err) {
         console.error('Error loading research post:', err);
         contentEl.innerHTML = '<div class="container" style="text-align:center; padding:var(--space-4xl) 0;">' +
-          '<h2>Error Loading Post</h2>' +
-          '<p>Something went wrong. Please try again later.</p>' +
-          '<a href="/research" class="btn btn--primary" style="margin-top:var(--space-xl);">&larr; Back to Research</a>' +
+          '<h2>' + KatlaI18n.t('js.errorLoadingPost', 'Error Loading Post') + '</h2>' +
+          '<p>' + KatlaI18n.t('js.errorLoadingPostDesc', 'Something went wrong. Please try again later.') + '</p>' +
+          '<a href="/research" class="btn btn--primary" style="margin-top:var(--space-xl);">&larr; ' + KatlaI18n.t('js.backToResearch', 'Back to Research') + '</a>' +
           '</div>';
       });
   }
@@ -72,7 +72,7 @@
     var pdfHTML = '';
     if (post.pdfUrl) {
       pdfHTML = '<a href="' + escapeAttr(post.pdfUrl) + '" class="btn btn--secondary" target="_blank" rel="noopener noreferrer" style="margin-top:var(--space-lg);">' +
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download PDF</a>';
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> ' + KatlaI18n.t('js.downloadPdf', 'Download PDF') + '</a>';
     }
 
     // Sanitize content
@@ -90,9 +90,9 @@
       '<section class="page-header" style="margin-top:0; padding-top:var(--space-3xl);">' +
         '<div class="container">' +
           '<nav class="page-header__breadcrumb" aria-label="Breadcrumb">' +
-            '<a href="/">Home</a>' +
+            '<a href="/">' + KatlaI18n.t('js.breadcrumb.home', 'Home') + '</a>' +
             '<span aria-hidden="true">/</span>' +
-            '<a href="/research">Research</a>' +
+            '<a href="/research">' + KatlaI18n.t('js.breadcrumb.research', 'Research') + '</a>' +
             '<span aria-hidden="true">/</span>' +
             '<span>' + escapeHTML(post.title) + '</span>' +
           '</nav>' +
@@ -125,7 +125,7 @@
       '<!-- Back -->' +
       '<section class="section section--gray" style="padding:var(--space-2xl) 0;">' +
         '<div class="container" style="text-align:center;">' +
-          '<a href="/research" class="btn btn--ghost">&larr; Back to Research</a>' +
+          '<a href="/research" class="btn btn--ghost">&larr; ' + KatlaI18n.t('js.backToResearch', 'Back to Research') + '</a>' +
         '</div>' +
       '</section>';
   }
@@ -134,9 +134,9 @@
     container.innerHTML =
       '<section class="page-header" style="margin-top:0; padding-top:var(--space-3xl);">' +
         '<div class="container" style="text-align:center;">' +
-          '<h1 class="page-header__title">Research Not Found</h1>' +
-          '<p class="page-header__description">The research post you are looking for does not exist or has been removed.</p>' +
-          '<a href="/research" class="btn btn--primary" style="margin-top:var(--space-xl);">&larr; Back to Research</a>' +
+          '<h1 class="page-header__title">' + KatlaI18n.t('js.researchNotFound', 'Research Not Found') + '</h1>' +
+          '<p class="page-header__description">' + KatlaI18n.t('js.researchNotFoundDesc', 'The research post you are looking for does not exist or has been removed.') + '</p>' +
+          '<a href="/research" class="btn btn--primary" style="margin-top:var(--space-xl);">&larr; ' + KatlaI18n.t('js.backToResearch', 'Back to Research') + '</a>' +
         '</div>' +
       '</section>';
   }
@@ -171,8 +171,8 @@
   }
 
   function formatDate(date) {
-    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    return months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+    var locale = KatlaI18n.getLang() === 'is' ? 'is-IS' : 'en-US';
+    return date.toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' });
   }
 
   function escapeHTML(str) {

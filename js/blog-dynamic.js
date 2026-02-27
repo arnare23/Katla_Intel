@@ -16,7 +16,8 @@
   function formatDate(dateStr) {
     if (!dateStr) return '';
     var date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    var locale = KatlaI18n.getLang() === 'is' ? 'is-IS' : 'en-US';
+    return date.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
   function getCategoryBadgeClass(category) {
@@ -81,13 +82,13 @@
         '<div class="featured-post__meta">' +
           '<span>' + formatDate(post.publishedAt) + '</span>' +
           '<span>|</span>' +
-          '<span>' + (post.readTime || 5) + ' min read</span>' +
+          '<span>' + (post.readTime || 5) + ' ' + KatlaI18n.t('js.minRead', 'min read') + '</span>' +
           '<span>|</span>' +
-          '<span>By ' + (post.author || 'Katla Intel') + '</span>' +
+          '<span>' + KatlaI18n.t('js.by', 'By') + ' ' + (post.author || 'Katla Intel') + '</span>' +
         '</div>' +
         '<h2 class="featured-post__title">' + DOMPurify.sanitize(post.title) + '</h2>' +
         '<p class="featured-post__excerpt">' + DOMPurify.sanitize(post.excerpt) + '</p>' +
-        '<a href="/blog-post?slug=' + encodeURIComponent(post.slug) + '" class="card__link">Read Article &rarr;</a>' +
+        '<a href="/blog-post?slug=' + encodeURIComponent(post.slug) + '" class="card__link">' + KatlaI18n.t('js.readArticle', 'Read Article') + ' &rarr;</a>' +
       '</div>' +
     '</div>';
 
@@ -110,10 +111,10 @@
         '<div class="card__meta">' +
           '<span>' + formatDate(post.publishedAt) + '</span>' +
           '<span>|</span>' +
-          '<span>' + (post.readTime || 5) + ' min read</span>' +
+          '<span>' + (post.readTime || 5) + ' ' + KatlaI18n.t('js.minRead', 'min read') + '</span>' +
         '</div>' +
         '<p class="card__description">' + DOMPurify.sanitize(post.excerpt) + '</p>' +
-        '<a href="/blog-post?slug=' + encodeURIComponent(post.slug) + '" class="card__link">Read More &rarr;</a>' +
+        '<a href="/blog-post?slug=' + encodeURIComponent(post.slug) + '" class="card__link">' + KatlaI18n.t('js.readMore', 'Read More') + ' &rarr;</a>' +
       '</div>' +
     '</article>';
   }
@@ -167,7 +168,7 @@
     }
 
     if (loadMoreBtn) {
-      loadMoreBtn.textContent = 'Loading...';
+      loadMoreBtn.textContent = KatlaI18n.t('js.loading', 'Loading...');
       loadMoreBtn.disabled = true;
     }
 
@@ -191,7 +192,7 @@
 
         if (posts.length === 0 && !append) {
           grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:var(--space-3xl) 0">' +
-            '<p style="font-size:var(--font-size-md);color:var(--color-text-muted)">No posts found in this category.</p>' +
+            '<p style="font-size:var(--font-size-md);color:var(--color-text-muted)">' + KatlaI18n.t('js.noPostsFound', 'No posts found in this category.') + '</p>' +
           '</div>';
           hasMore = false;
         } else {
@@ -205,7 +206,7 @@
 
         if (loadMoreBtn) {
           loadMoreBtn.style.display = hasMore ? '' : 'none';
-          loadMoreBtn.textContent = 'Load More Articles';
+          loadMoreBtn.textContent = KatlaI18n.t('js.loadMore', 'Load More Articles');
           loadMoreBtn.disabled = false;
         }
 
@@ -219,7 +220,7 @@
         console.error('Error loading posts:', error);
         isLoading = false;
         if (loadMoreBtn) {
-          loadMoreBtn.textContent = 'Load More Articles';
+          loadMoreBtn.textContent = KatlaI18n.t('js.loadMore', 'Load More Articles');
           loadMoreBtn.disabled = false;
         }
       });
@@ -286,35 +287,35 @@
         turnstileToken = turnstile.getResponse(turnstileWidgetId);
       }
       if (!turnstileToken) {
-        submitBtn.textContent = 'Please wait...';
-        setTimeout(function() { submitBtn.textContent = 'Subscribe'; }, 2000);
+        submitBtn.textContent = KatlaI18n.t('js.pleaseWait', 'Please wait...');
+        setTimeout(function() { submitBtn.textContent = KatlaI18n.t('js.subscribe', 'Subscribe'); }, 2000);
         return;
       }
 
-      submitBtn.textContent = 'Subscribing...';
+      submitBtn.textContent = KatlaI18n.t('js.subscribing', 'Subscribing...');
       submitBtn.disabled = true;
 
       KatlaAPI.subscribers.subscribe(email, 'blog', turnstileToken)
       .then(function() {
         emailInput.value = '';
-        submitBtn.textContent = 'Subscribed!';
+        submitBtn.textContent = KatlaI18n.t('js.subscribed', 'Subscribed!');
         if (typeof turnstile !== 'undefined' && turnstileWidgetId !== undefined) {
           turnstile.reset(turnstileWidgetId);
         }
         setTimeout(function() {
-          submitBtn.textContent = 'Subscribe';
+          submitBtn.textContent = KatlaI18n.t('js.subscribe', 'Subscribe');
           submitBtn.disabled = false;
         }, 3000);
       })
       .catch(function(error) {
         console.error('Newsletter subscription error:', error);
-        submitBtn.textContent = 'Error - Try Again';
+        submitBtn.textContent = KatlaI18n.t('js.errorTryAgain', 'Error - Try Again');
         submitBtn.disabled = false;
         if (typeof turnstile !== 'undefined' && turnstileWidgetId !== undefined) {
           turnstile.reset(turnstileWidgetId);
         }
         setTimeout(function() {
-          submitBtn.textContent = 'Subscribe';
+          submitBtn.textContent = KatlaI18n.t('js.subscribe', 'Subscribe');
         }, 3000);
       });
     });

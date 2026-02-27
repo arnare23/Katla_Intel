@@ -20,11 +20,11 @@ window.PAGE_REGISTRY = {
   '/pages/about/': {
     sections: [
       { url: '/pages/about/sections/header.html' },
-      { url: '/pages/about/sections/mission.html', nav: { id: 'mission', name: 'Our Mission' } },
-      { url: '/pages/about/sections/story.html', nav: { id: 'story', name: 'Our Story' } },
-      { url: '/pages/about/sections/values.html', nav: { id: 'values', name: 'Our Values' } },
-      { url: '/pages/about/sections/team.html', nav: { id: 'team', name: 'Meet the Founders' } },
-      { url: '/pages/about/sections/approach.html', nav: { id: 'approach', name: 'How We Work' } }
+      { url: '/pages/about/sections/mission.html', nav: { id: 'mission', name: 'Our Mission', i18nKey: 'navsec.about.mission' } },
+      { url: '/pages/about/sections/story.html', nav: { id: 'story', name: 'Our Story', i18nKey: 'navsec.about.story' } },
+      { url: '/pages/about/sections/values.html', nav: { id: 'values', name: 'Our Values', i18nKey: 'navsec.about.values' } },
+      { url: '/pages/about/sections/team.html', nav: { id: 'team', name: 'Meet the Founders', i18nKey: 'navsec.about.team' } },
+      { url: '/pages/about/sections/approach.html', nav: { id: 'approach', name: 'How We Work', i18nKey: 'navsec.about.approach' } }
     ],
     scripts: ['/js/main.js', '/js/animations.js']
   },
@@ -32,16 +32,16 @@ window.PAGE_REGISTRY = {
   '/pages/services/': {
     sections: [
       { url: '/pages/services/sections/header.html' },
-      { url: '/pages/services/sections/overview.html', nav: { id: 'services-overview', name: 'Our Services' } },
-      { url: '/pages/services/sections/forecasting.html', nav: { id: 'service-forecasting', name: 'Forecasting Models' } },
-      { url: '/pages/services/sections/clustering.html', nav: { id: 'service-clustering', name: 'Clustering & Classification' } },
-      { url: '/pages/services/sections/computer-vision.html', nav: { id: 'service-computer-vision', name: 'Computer Vision' } },
-      { url: '/pages/services/sections/control.html', nav: { id: 'service-control', name: 'Control Models' } },
-      { url: '/pages/services/sections/mixed.html', nav: { id: 'service-mixed', name: 'Mixed Models' } },
-      { url: '/pages/services/sections/automation.html', nav: { id: 'service-automation', name: 'Workflow Automation' } },
-      { url: '/pages/services/sections/file-management.html', nav: { id: 'service-file-management', name: 'File Management' } },
-      { url: '/pages/services/sections/consulting.html', nav: { id: 'service-consulting', name: 'Neural Network Consulting' } },
-      { url: '/pages/services/sections/chatbot.html', nav: { id: 'service-chatbot', name: 'AI Chatbot Creation' } },
+      { url: '/pages/services/sections/overview.html', nav: { id: 'services-overview', name: 'Our Services', i18nKey: 'navsec.services.overview' } },
+      { url: '/pages/services/sections/forecasting.html', nav: { id: 'service-forecasting', name: 'Forecasting Models', i18nKey: 'navsec.services.forecasting' } },
+      { url: '/pages/services/sections/clustering.html', nav: { id: 'service-clustering', name: 'Clustering & Classification', i18nKey: 'navsec.services.clustering' } },
+      { url: '/pages/services/sections/computer-vision.html', nav: { id: 'service-computer-vision', name: 'Computer Vision', i18nKey: 'navsec.services.computerVision' } },
+      { url: '/pages/services/sections/control.html', nav: { id: 'service-control', name: 'Control Models', i18nKey: 'navsec.services.control' } },
+      { url: '/pages/services/sections/mixed.html', nav: { id: 'service-mixed', name: 'Mixed Models', i18nKey: 'navsec.services.mixed' } },
+      { url: '/pages/services/sections/automation.html', nav: { id: 'service-automation', name: 'Workflow Automation', i18nKey: 'navsec.services.automation' } },
+      { url: '/pages/services/sections/file-management.html', nav: { id: 'service-file-management', name: 'File Management', i18nKey: 'navsec.services.fileManagement' } },
+      { url: '/pages/services/sections/consulting.html', nav: { id: 'service-consulting', name: 'Neural Network Consulting', i18nKey: 'navsec.services.consulting' } },
+      { url: '/pages/services/sections/chatbot.html', nav: { id: 'service-chatbot', name: 'AI Chatbot Creation', i18nKey: 'navsec.services.chatbot' } },
       { url: '/pages/services/sections/process.html' },
       { url: '/pages/services/sections/related-case-studies.html' },
       { url: '/pages/services/sections/cta.html' }
@@ -52,8 +52,8 @@ window.PAGE_REGISTRY = {
   '/pages/contact/': {
     sections: [
       { url: '/pages/contact/sections/header.html' },
-      { url: '/pages/contact/sections/contact-form.html', nav: { id: 'contact', name: 'Send a Message' } },
-      { url: '/pages/contact/sections/faq.html', nav: { id: 'faq', name: 'FAQ' } }
+      { url: '/pages/contact/sections/contact-form.html', nav: { id: 'contact', name: 'Send a Message', i18nKey: 'navsec.contact.form' } },
+      { url: '/pages/contact/sections/faq.html', nav: { id: 'faq', name: 'FAQ', i18nKey: 'navsec.contact.faq' } }
     ],
     scripts: ['/js/main.js', '/js/animations.js', '/js/contact.js']
   },

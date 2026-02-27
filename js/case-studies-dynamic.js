@@ -23,7 +23,8 @@
   function formatDate(dateStr) {
     if (!dateStr) return '';
     var date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    var locale = KatlaI18n.getLang() === 'is' ? 'is-IS' : 'en-US';
+    return date.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
   function getCategoryBadgeClass(category) {
@@ -130,7 +131,7 @@
 
         if (studies.length === 0) {
           grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:var(--space-3xl) 0">' +
-            '<p style="font-size:var(--font-size-md);color:var(--color-text-muted)">No case studies found in this category.</p>' +
+            '<p style="font-size:var(--font-size-md);color:var(--color-text-muted)">' + KatlaI18n.t('js.noCaseStudies', 'No case studies found in this category.') + '</p>' +
           '</div>';
         } else {
           studies.forEach(function(study) {

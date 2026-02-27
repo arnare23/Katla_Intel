@@ -46,7 +46,7 @@
       return;
     }
 
-    var html = '<button class="filter-bar__btn filter-bar__btn--active" data-tag="all">All</button>';
+    var html = '<button class="filter-bar__btn filter-bar__btn--active" data-tag="all">' + KatlaI18n.t('js.all', 'All') + '</button>';
     tags.forEach(function(tag) {
       html += '<button class="filter-bar__btn" data-tag="' + escapeAttr(tag) + '">' + escapeHTML(tag) + '</button>';
     });
@@ -74,7 +74,7 @@
     grid.innerHTML = '';
 
     if (items.length === 0) {
-      grid.innerHTML = '<p style="text-align:center; color:var(--color-text-secondary); font-size:var(--font-size-md); padding:var(--space-3xl) 0; grid-column:1/-1;">No research found for this category.</p>';
+      grid.innerHTML = '<p style="text-align:center; color:var(--color-text-secondary); font-size:var(--font-size-md); padding:var(--space-3xl) 0; grid-column:1/-1;">' + KatlaI18n.t('js.noResearch', 'No research found for this category.') + '</p>';
       return;
     }
 
@@ -136,10 +136,10 @@
 
     // Actions
     var actionsHTML = '<div style="display:flex; flex-wrap:wrap; gap:var(--space-sm); align-items:center; margin-top:auto;">';
-    actionsHTML += '<a href="/research-post?slug=' + encodeURIComponent(item.slug) + '" class="card__link">Read More <span aria-hidden="true">&rarr;</span></a>';
+    actionsHTML += '<a href="/research-post?slug=' + encodeURIComponent(item.slug) + '" class="card__link">' + KatlaI18n.t('js.readMore', 'Read More') + ' <span aria-hidden="true">&rarr;</span></a>';
     if (item.pdfUrl) {
       actionsHTML += '<a href="' + escapeAttr(item.pdfUrl) + '" class="btn btn--secondary btn--small" target="_blank" rel="noopener noreferrer">' +
-        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> PDF</a>';
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> ' + KatlaI18n.t('js.pdf', 'PDF') + '</a>';
     }
     actionsHTML += '</div>';
 
@@ -179,8 +179,8 @@
   }
 
   function formatDate(date) {
-    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    return months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+    var locale = KatlaI18n.getLang() === 'is' ? 'is-IS' : 'en-US';
+    return date.toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' });
   }
 
   function escapeHTML(str) {

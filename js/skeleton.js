@@ -39,6 +39,9 @@
     .then(function (htmlFragments) {
       main.innerHTML = htmlFragments.join('\n');
 
+      // Apply i18n translations to the just-loaded sections
+      if (window.KatlaI18n) window.KatlaI18n.applyTranslations();
+
       // Load page-specific scripts sequentially (order matters)
       var scripts = config.scripts || [];
       return scripts.reduce(function (chain, src) {

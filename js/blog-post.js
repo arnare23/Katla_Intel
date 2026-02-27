@@ -8,7 +8,8 @@
   function formatDate(dateStr) {
     if (!dateStr) return '';
     var date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    var locale = KatlaI18n.getLang() === 'is' ? 'is-IS' : 'en-US';
+    return date.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
   function getCategoryBadgeClass(category) {
@@ -57,9 +58,9 @@
     if (relatedSection) relatedSection.style.display = 'none';
     if (contentSection) {
       contentSection.innerHTML = '<div class="container" style="text-align:center;padding:var(--space-5xl) var(--space-lg)">' +
-        '<h2 style="margin-bottom:var(--space-md)">Post Not Found</h2>' +
-        '<p style="color:var(--color-text-secondary);margin-bottom:var(--space-xl)">The blog post you are looking for does not exist or has been removed.</p>' +
-        '<a href="/blog" class="btn btn--primary">Back to Blog</a>' +
+        '<h2 style="margin-bottom:var(--space-md)">' + KatlaI18n.t('js.postNotFound', 'Post Not Found') + '</h2>' +
+        '<p style="color:var(--color-text-secondary);margin-bottom:var(--space-xl)">' + KatlaI18n.t('js.postNotFoundDesc', 'The blog post you are looking for does not exist or has been removed.') + '</p>' +
+        '<a href="/blog" class="btn btn--primary">' + KatlaI18n.t('js.backToBlog', 'Back to Blog') + '</a>' +
       '</div>';
     }
   }
@@ -86,20 +87,20 @@
       heroSection.innerHTML = '<div style="' + bgStyle + 'padding:var(--space-5xl) 0 var(--space-3xl);margin-top:var(--navbar-height)">' +
         '<div class="container" style="text-align:center">' +
           '<nav class="page-header__breadcrumb" aria-label="Breadcrumb" style="margin-bottom:var(--space-lg)">' +
-            '<a href="/" style="color:rgba(255,255,255,0.7)">Home</a>' +
+            '<a href="/" style="color:rgba(255,255,255,0.7)">' + KatlaI18n.t('js.breadcrumb.home', 'Home') + '</a>' +
             '<span aria-hidden="true" style="color:rgba(255,255,255,0.5)">/</span>' +
-            '<a href="/blog" style="color:rgba(255,255,255,0.7)">Blog</a>' +
+            '<a href="/blog" style="color:rgba(255,255,255,0.7)">' + KatlaI18n.t('js.breadcrumb.blog', 'Blog') + '</a>' +
             '<span aria-hidden="true" style="color:rgba(255,255,255,0.5)">/</span>' +
             '<span style="color:rgba(255,255,255,0.9)">' + DOMPurify.sanitize(post.title) + '</span>' +
           '</nav>' +
           '<span class="badge ' + getCategoryBadgeClass(post.category) + '" style="margin-bottom:var(--space-md)">' + DOMPurify.sanitize(post.category) + '</span>' +
           '<h1 style="font-size:var(--font-size-3xl);color:var(--color-white);margin-bottom:var(--space-lg);max-width:800px;margin-left:auto;margin-right:auto">' + DOMPurify.sanitize(post.title) + '</h1>' +
           '<div style="display:flex;align-items:center;justify-content:center;gap:var(--space-md);font-size:var(--font-size-sm);color:rgba(255,255,255,0.7)">' +
-            '<span>By ' + DOMPurify.sanitize(post.author || 'Katla Intel') + '</span>' +
+            '<span>' + KatlaI18n.t('js.by', 'By') + ' ' + DOMPurify.sanitize(post.author || 'Katla Intel') + '</span>' +
             '<span>|</span>' +
             '<span>' + formatDate(post.publishedAt) + '</span>' +
             '<span>|</span>' +
-            '<span>' + (post.readTime || 5) + ' min read</span>' +
+            '<span>' + (post.readTime || 5) + ' ' + KatlaI18n.t('js.minRead', 'min read') + '</span>' +
           '</div>' +
         '</div>' +
       '</div>';
@@ -121,7 +122,7 @@
         '</div>' +
         tagsHTML +
         '<div style="margin-top:var(--space-2xl)">' +
-          '<a href="/blog" class="btn btn--secondary">&larr; Back to Blog</a>' +
+          '<a href="/blog" class="btn btn--secondary">&larr; ' + KatlaI18n.t('js.backToBlog', 'Back to Blog') + '</a>' +
         '</div>' +
       '</div>';
     }
@@ -153,18 +154,18 @@
           '<div class="card__meta">' +
             '<span>' + formatDate(post.publishedAt) + '</span>' +
             '<span>|</span>' +
-            '<span>' + (post.readTime || 5) + ' min read</span>' +
+            '<span>' + (post.readTime || 5) + ' ' + KatlaI18n.t('js.minRead', 'min read') + '</span>' +
           '</div>' +
           '<p class="card__description">' + DOMPurify.sanitize(post.excerpt) + '</p>' +
-          '<a href="/blog-post?slug=' + encodeURIComponent(post.slug) + '" class="card__link">Read More &rarr;</a>' +
+          '<a href="/blog-post?slug=' + encodeURIComponent(post.slug) + '" class="card__link">' + KatlaI18n.t('js.readMore', 'Read More') + ' &rarr;</a>' +
         '</div>' +
       '</article>';
     });
 
     relatedSection.innerHTML = '<div class="container">' +
       '<div class="section__header">' +
-        '<h2 class="section__title">Related Articles</h2>' +
-        '<p class="section__subtitle">More posts you might find interesting</p>' +
+        '<h2 class="section__title">' + KatlaI18n.t('js.relatedArticles', 'Related Articles') + '</h2>' +
+        '<p class="section__subtitle">' + KatlaI18n.t('js.relatedSubtitle', 'More posts you might find interesting') + '</p>' +
       '</div>' +
       '<div class="blog-grid" data-reveal-stagger>' + cardsHTML + '</div>' +
     '</div>';

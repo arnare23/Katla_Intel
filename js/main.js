@@ -235,6 +235,13 @@
     initDropdowns();
   }
 
+  // Expose for re-initialization after language change re-renders the navbar
+  window.reinitNavbar = function () {
+    initNavbar();
+    initActiveNavLink();
+    initDropdowns();
+  };
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

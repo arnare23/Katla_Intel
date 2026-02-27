@@ -8,7 +8,8 @@
   function formatDate(dateStr) {
     if (!dateStr) return '';
     var date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    var locale = KatlaI18n.getLang() === 'is' ? 'is-IS' : 'en-US';
+    return date.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
   }
 
   function getCategoryBadgeClass(category) {
@@ -63,9 +64,9 @@
     if (ctaSection) ctaSection.style.display = 'none';
     if (contentSection) {
       contentSection.innerHTML = '<div class="container" style="text-align:center;padding:var(--space-5xl) var(--space-lg)">' +
-        '<h2 style="margin-bottom:var(--space-md)">Case Study Not Found</h2>' +
-        '<p style="color:var(--color-text-secondary);margin-bottom:var(--space-xl)">The case study you are looking for does not exist or has been removed.</p>' +
-        '<a href="/case-studies" class="btn btn--primary">Back to Case Studies</a>' +
+        '<h2 style="margin-bottom:var(--space-md)">' + KatlaI18n.t('js.caseStudyNotFound', 'Case Study Not Found') + '</h2>' +
+        '<p style="color:var(--color-text-secondary);margin-bottom:var(--space-xl)">' + KatlaI18n.t('js.caseStudyNotFoundDesc', 'The case study you are looking for does not exist or has been removed.') + '</p>' +
+        '<a href="/case-studies" class="btn btn--primary">' + KatlaI18n.t('js.backToCaseStudies', 'Back to Case Studies') + '</a>' +
       '</div>';
     }
   }
@@ -95,9 +96,9 @@
       heroSection.innerHTML = '<div style="' + bgStyle + 'padding:var(--space-5xl) 0 var(--space-3xl);margin-top:var(--navbar-height)">' +
         '<div class="container" style="text-align:center">' +
           '<nav class="page-header__breadcrumb" aria-label="Breadcrumb" style="margin-bottom:var(--space-lg)">' +
-            '<a href="/" style="color:rgba(255,255,255,0.7)">Home</a>' +
+            '<a href="/" style="color:rgba(255,255,255,0.7)">' + KatlaI18n.t('js.breadcrumb.home', 'Home') + '</a>' +
             '<span aria-hidden="true" style="color:rgba(255,255,255,0.5)">/</span>' +
-            '<a href="/case-studies" style="color:rgba(255,255,255,0.7)">Case Studies</a>' +
+            '<a href="/case-studies" style="color:rgba(255,255,255,0.7)">' + KatlaI18n.t('js.breadcrumb.caseStudies', 'Case Studies') + '</a>' +
             '<span aria-hidden="true" style="color:rgba(255,255,255,0.5)">/</span>' +
             '<span style="color:rgba(255,255,255,0.9)">' + DOMPurify.sanitize(study.title) + '</span>' +
           '</nav>' +
@@ -132,7 +133,7 @@
           DOMPurify.sanitize(study.content, { ADD_TAGS: ['iframe'], ADD_ATTR: ['allowfullscreen', 'frameborder', 'src'] }) +
         '</div>' +
         '<div style="margin-top:var(--space-2xl)">' +
-          '<a href="/case-studies" class="btn btn--secondary">&larr; Back to Case Studies</a>' +
+          '<a href="/case-studies" class="btn btn--secondary">&larr; ' + KatlaI18n.t('js.backToCaseStudies', 'Back to Case Studies') + '</a>' +
         '</div>' +
       '</div>';
     }
@@ -140,7 +141,7 @@
     // Technologies
     if (techSection && study.technologies && study.technologies.length > 0) {
       var techHTML = '<div class="container" style="text-align:center">' +
-        '<h2 style="font-size:var(--font-size-xl);margin-bottom:var(--space-xl)">Technologies Used</h2>' +
+        '<h2 style="font-size:var(--font-size-xl);margin-bottom:var(--space-xl)">' + KatlaI18n.t('js.technologiesUsed', 'Technologies Used') + '</h2>' +
         '<div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);justify-content:center">';
       study.technologies.forEach(function(tech) {
         techHTML += '<span class="badge badge--blue">' + DOMPurify.sanitize(tech) + '</span>';

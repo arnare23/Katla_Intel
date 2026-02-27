@@ -19,7 +19,7 @@
 
         if (jobs.length === 0) {
           container.innerHTML = '<div class="positions-empty" data-reveal="fade-up">' +
-            '<p style="text-align:center; color:var(--color-text-secondary); font-size:var(--font-size-md); padding:var(--space-3xl) 0;">No open positions at the moment. Check back soon!</p>' +
+            '<p style="text-align:center; color:var(--color-text-secondary); font-size:var(--font-size-md); padding:var(--space-3xl) 0;">' + KatlaI18n.t('js.noPositions', 'No open positions at the moment. Check back soon!') + '</p>' +
             '</div>';
           revealNewElements(container);
           return;
@@ -34,7 +34,7 @@
       .catch(function(err) {
         console.error('Error loading jobs:', err);
         container.innerHTML = '<div class="positions-empty">' +
-          '<p style="text-align:center; color:var(--color-text-secondary); font-size:var(--font-size-md); padding:var(--space-3xl) 0;">Unable to load positions. Please try again later.</p>' +
+          '<p style="text-align:center; color:var(--color-text-secondary); font-size:var(--font-size-md); padding:var(--space-3xl) 0;">' + KatlaI18n.t('js.unableToLoadPositions', 'Unable to load positions. Please try again later.') + '</p>' +
           '</div>';
       });
   }
@@ -44,15 +44,16 @@
     article.className = 'card card--job';
     article.setAttribute('data-reveal', 'fade-up');
 
-    var typeBadgeClass = job.type === 'Full-time' ? 'badge--blue' : 'badge--blue';
-    var tagsHTML = '<span class="badge ' + typeBadgeClass + '">' + escapeHTML(job.type) + '</span>';
+    var typeLabel = job.type === 'Full-time' ? KatlaI18n.t('js.fullTime', 'Full-time') : escapeHTML(job.type);
+    var typeBadgeClass = 'badge--blue';
+    var tagsHTML = '<span class="badge ' + typeBadgeClass + '">' + typeLabel + '</span>';
     tagsHTML += '<span class="badge badge--gray">' + escapeHTML(job.location) + '</span>';
     tagsHTML += '<span class="badge badge--gray">' + escapeHTML(job.department) + '</span>';
 
     var reqHTML = '';
     if (job.requirements && job.requirements.length) {
       reqHTML = '<div>' +
-        '<p class="text-small" style="font-weight:var(--font-weight-semibold); margin-bottom:var(--space-sm); color:var(--color-text-primary);">Requirements</p>' +
+        '<p class="text-small" style="font-weight:var(--font-weight-semibold); margin-bottom:var(--space-sm); color:var(--color-text-primary);">' + KatlaI18n.t('js.requirements', 'Requirements') + '</p>' +
         '<ul style="list-style:disc; padding-left:var(--space-lg); display:flex; flex-direction:column; gap:var(--space-xs);">';
       job.requirements.forEach(function(req) {
         reqHTML += '<li class="text-small" style="color:var(--color-text-secondary);">' + escapeHTML(req) + '</li>';
@@ -70,7 +71,7 @@
       '<p class="card__description">' + escapeHTML(desc) + '</p>' +
       reqHTML +
       '<div class="card__footer">' +
-        '<a href="mailto:careers@katlagroup.com?subject=Application: ' + encodeURIComponent(job.title) + '" class="btn btn--primary btn--small">Apply Now &rarr;</a>' +
+        '<a href="mailto:careers@katlagroup.com?subject=Application: ' + encodeURIComponent(job.title) + '" class="btn btn--primary btn--small">' + KatlaI18n.t('js.applyNow', 'Apply Now') + ' &rarr;</a>' +
       '</div>';
 
     return article;

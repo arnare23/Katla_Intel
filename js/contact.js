@@ -11,21 +11,22 @@
     if (!form) return;
 
     var submitBtn = form.querySelector('button[type="submit"]');
-    var submitBtnText = submitBtn ? submitBtn.textContent : 'Send Message';
+    var submitBtnText = submitBtn ? submitBtn.textContent : KatlaI18n.t('js.sendMessage', 'Send Message');
 
     var rules = {
-      name:    { required: true, minLength: 2, message: 'Please enter your name (at least 2 characters)' },
-      email:   { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Please enter a valid email address' },
-      service: { required: true, message: 'Please select a service' },
-      message: { required: true, minLength: 10, message: 'Please describe your project (at least 10 characters)' }
+      name:    { required: true, minLength: 2, message: function() { return KatlaI18n.t('js.validation.name', 'Please enter your name (at least 2 characters)'); } },
+      email:   { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: function() { return KatlaI18n.t('js.validation.email', 'Please enter a valid email address'); } },
+      service: { required: true, message: function() { return KatlaI18n.t('js.validation.service', 'Please select a service'); } },
+      message: { required: true, minLength: 10, message: function() { return KatlaI18n.t('js.validation.message', 'Please describe your project (at least 10 characters)'); } }
     };
 
     function validateField(name, value) {
       var rule = rules[name];
       if (!rule) return '';
-      if (rule.required && (!value || value.trim() === '')) return rule.message;
-      if (rule.minLength && value.trim().length < rule.minLength) return rule.message;
-      if (rule.pattern && !rule.pattern.test(value)) return rule.message;
+      var msg = typeof rule.message === 'function' ? rule.message() : rule.message;
+      if (rule.required && (!value || value.trim() === '')) return msg;
+      if (rule.minLength && value.trim().length < rule.minLength) return msg;
+      if (rule.pattern && !rule.pattern.test(value)) return msg;
       return '';
     }
 
@@ -91,7 +92,7 @@
       // Disable button, show loading
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+        submitBtn.textContent = KatlaI18n.t('js.sending', 'Sending...');
       }
 
       // Gather form data
@@ -138,7 +139,7 @@
       existingError.style.cssText = 'padding:var(--space-md); background-color:#fef2f2; border:1px solid var(--color-error); border-radius:var(--radius-md); color:var(--color-error); font-size:var(--font-size-sm); text-align:center; margin-top:var(--space-md);';
       form.appendChild(existingError);
     }
-    existingError.textContent = 'Something went wrong. Please try again or email us directly at hello@katlagroup.com';
+    existingError.textContent = KatlaI18n.t('js.formError', 'Something went wrong. Please try again or email us directly at hello@katlagroup.com');
     existingError.style.display = 'block';
   }
 
