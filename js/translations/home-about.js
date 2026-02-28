@@ -127,7 +127,7 @@
   window.KatlaI18n.registerTranslations('is', {
 
     /* ── Heim : Hero ── */
-    'home.hero.label': 'Hágæða–Gervigreindarlausnir á öllum sviðum',
+    'home.hero.label': 'Tækni- og ráðgjafarlausnir',
     'home.hero.title': 'Hágæða Gervigreindarlausnir á öllum sviðum',
     'home.hero.subtitle': 'Við hönnum og byggjum sérsniðin tauganetskerfi sem hjálpa fyrirtækjum að sjálfvirknivæða verkferla, draga út innsýn úr gögnum og taka betri ákvarðanir.',
     'home.hero.cta1': 'Skoða þjónustur okkar',

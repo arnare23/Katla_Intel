@@ -9,9 +9,7 @@ window.PAGE_REGISTRY = {
       { url: '/pages/home/sections/hero.html' },
       { url: '/pages/home/sections/clients.html' },
       { url: '/pages/home/sections/services-overview.html' },
-      { url: '/pages/home/sections/featured-case-study.html' },
       { url: '/pages/home/sections/about-preview.html' },
-      { url: '/pages/home/sections/stats.html' },
       { url: '/pages/home/sections/cta.html' }
     ],
     scripts: ['/js/main.js', '/js/animations.js']
