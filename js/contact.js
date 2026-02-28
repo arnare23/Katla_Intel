@@ -139,7 +139,7 @@
       existingError.style.cssText = 'padding:var(--space-md); background-color:#fef2f2; border:1px solid var(--color-error); border-radius:var(--radius-md); color:var(--color-error); font-size:var(--font-size-sm); text-align:center; margin-top:var(--space-md);';
       form.appendChild(existingError);
     }
-    existingError.textContent = KatlaI18n.t('js.formError', 'Something went wrong. Please try again or email us directly at hello@katlagroup.com');
+    existingError.textContent = KatlaI18n.t('js.formError', 'Something went wrong. Please try again or email us directly at hello@katlaintel.is');
     existingError.style.display = 'block';
   }
 

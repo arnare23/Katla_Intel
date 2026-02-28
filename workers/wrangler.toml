@@ -12,4 +12,4 @@ database_name = "katla-base"
 database_id = "a073a463-3439-48f7-8905-a238dcd11c81"
 
 [vars]
-CORS_ORIGIN = "https://katlagroup.com"
+CORS_ORIGIN = "https://katlaintel.is"

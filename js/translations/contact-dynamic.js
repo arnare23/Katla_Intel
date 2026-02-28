@@ -63,7 +63,7 @@
     'js.validation.service': 'Please select a service',
     'js.validation.message': 'Please describe your project (at least 10 characters)',
     'js.formSuccess': "Thank you! We've received your message and will get back to you within 24 hours.",
-    'js.formError': 'Something went wrong. Please try again or email us directly at hello@katlagroup.com',
+    'js.formError': 'Something went wrong. Please try again or email us directly at hello@katlaintel.is',
 
     // Blog
     'js.readArticle': 'Read Article',
@@ -180,7 +180,7 @@
     'js.validation.service': 'Vinsamlegast veldu \u00FEj\u00F3nustu',
     'js.validation.message': 'Vinsamlegast l\u00FDstu verkefninu \u00FE\u00EDnu (a\u00F0 minnsta kosti 10 stafir)',
     'js.formSuccess': 'Takk fyrir! Vi\u00F0 h\u00F6fum m\u00F3tteki\u00F0 skilabo\u00F0in \u00FE\u00EDn og munum svara innan s\u00F3larhrings.',
-    'js.formError': 'Eitthva\u00F0 f\u00F3r \u00FArskei\u00F0is. Vinsamlegast reyndu aftur e\u00F0a sendu okkur t\u00F6lvup\u00F3st \u00E1 hello@katlagroup.com',
+    'js.formError': 'Eitthva\u00F0 f\u00F3r \u00FArskei\u00F0is. Vinsamlegast reyndu aftur e\u00F0a sendu okkur t\u00F6lvup\u00F3st \u00E1 hello@katlaintel.is',
 
     // Blog
     'js.readArticle': 'Lesa grein',

@@ -1,0 +1,61 @@
+/* Sans-Serif — Clean & Modern */
+--font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;                    /* Google Font */
+--font-primary: 'Helvetica Neue', Helvetica, Arial, -apple-system, sans-serif;                                  /* System font */ x
+--font-primary: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                    /* System font (Apple only) */
+--font-primary: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;                     /* Google Font */
+--font-primary: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                         /* Google Font */
+--font-primary: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                              /* Google Font */
+--font-primary: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                       /* Google Font */
+--font-primary: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                     /* Google Font */
+--font-primary: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                         /* Google Font */
+--font-primary: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                           /* Google Font */
+--font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                 /* Google Font */
+--font-primary: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                            /* Google Font */
+--font-primary: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                           /* Google Font */
+--font-primary: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                       /* Google Font */
+--font-primary: 'General Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                      /* Fontshare (not Google) */
+
+/* Geometric Sans — Tech & Startup */
+--font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                           /* Google Font */
+--font-primary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                        /* Google Font */
+--font-primary: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                           /* Google Font */
+--font-primary: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                           /* Google Font */
+--font-primary: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                          /* Google Font */
+--font-primary: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                              /* Google Font */
+--font-primary: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                     /* Google Font */
+--font-primary: 'Lexend', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                            /* Google Font */
+--font-primary: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                           /* Fontshare (not Google) */
+--font-primary: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                   /* Fontshare (not Google) */
+
+/* Humanist Sans — Warm & Approachable */
+--font-primary: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                         /* Google Font */
+--font-primary: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                         /* Google Font */
+--font-primary: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                            /* Google Font */
+--font-primary: 'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                            /* Google Font */
+--font-primary: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                             /* Google Font */
+--font-primary: 'Karla', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                             /* Google Font */
+--font-primary: 'Cabin', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                             /* Google Font */
+--font-primary: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                             /* Google Font */
+--font-primary: 'Overpass', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                          /* Google Font */
+--font-primary: 'Red Hat Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;                   /* Google Font */
+
+/* Serif — Premium & Editorial */
+--font-primary: 'Georgia', 'Times New Roman', Times, serif;                                                      /* System font */
+--font-primary: 'Playfair Display', Georgia, 'Times New Roman', serif;                                           /* Google Font */
+--font-primary: 'Libre Baskerville', Georgia, 'Times New Roman', serif;                                          /* Google Font */
+--font-primary: 'Lora', Georgia, 'Times New Roman', serif;                                                       /* Google Font */
+--font-primary: 'Merriweather', Georgia, 'Times New Roman', serif;                                               /* Google Font */
+--font-primary: 'Source Serif 4', Georgia, 'Times New Roman', serif;                                             /* Google Font */
+--font-primary: 'Fraunces', Georgia, 'Times New Roman', serif;                                                   /* Google Font */
+--font-primary: 'Newsreader', Georgia, 'Times New Roman', serif;                                                 /* Google Font */
+--font-primary: 'Cormorant Garamond', Garamond, Georgia, serif;                                                  /* Google Font */
+--font-primary: 'DM Serif Display', Georgia, 'Times New Roman', serif;                                           /* Google Font */
+
+/* Slab Serif — Bold & Confident */
+--font-primary: 'Roboto Slab', Georgia, 'Times New Roman', serif;                                                /* Google Font */
+--font-primary: 'Zilla Slab', Georgia, 'Times New Roman', serif;                                                 /* Google Font */
+--font-primary: 'Arvo', Georgia, 'Times New Roman', serif;                                                       /* Google Font */
+
+/* System Native — Maximum Performance (no import needed) */
+--font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;   /* System font */
+--font-primary: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;                   /* System font */

@@ -171,8 +171,8 @@
 
     /* ── Heim : Um okkur forskoðun ── */
     'home.about.label': 'Hverjir erum við',
-    'home.about.title': 'Stofnað af tveimur meistaranema með framtíðarsýn',
-    'home.about.text': 'Það sem byrjaði sem sameiginleg ástríða fyrir djúpnámi á meðan við lærðum fjármálaverkfræði hefur vaxið í teymi sem leggur sig fram um að gera háþróaða gervigreind aðgengilega fyrirtækjum af öllum stærðum.',
+    'home.about.title': 'Stofnað af tveimur félögum með framtíðarsýn',
+    'home.about.text': 'Það sem byrjaði sem sameiginlegur áhugi fyrir djúpnámi og gervigreind hefur vaxið í teymi sem leggur sig fram um að gera háþróaðar gervigreind aðgengilega fyrirtækjum af öllum stærðum.',
     'home.about.cta': 'Fræðast meira um okkur &rarr;',
 
     /* ── Heim : Tölfræði ── */

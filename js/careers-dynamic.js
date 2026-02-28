@@ -71,7 +71,7 @@
       '<p class="card__description">' + escapeHTML(desc) + '</p>' +
       reqHTML +
       '<div class="card__footer">' +
-        '<a href="mailto:careers@katlagroup.com?subject=Application: ' + encodeURIComponent(job.title) + '" class="btn btn--primary btn--small">' + KatlaI18n.t('js.applyNow', 'Apply Now') + ' &rarr;</a>' +
+        '<a href="mailto:careers@katlaintel.is?subject=Application: ' + encodeURIComponent(job.title) + '" class="btn btn--primary btn--small">' + KatlaI18n.t('js.applyNow', 'Apply Now') + ' &rarr;</a>' +
       '</div>';
 
     return article;
