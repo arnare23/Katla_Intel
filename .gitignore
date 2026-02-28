@@ -1,7 +1,6 @@
 .venv/
 .idea/
 node_modules/
-.firebase/
 .DS_Store
 *.log
 
