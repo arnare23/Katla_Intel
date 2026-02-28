@@ -12,10 +12,6 @@
     { i18nKey: 'nav.home', label: 'Home', href: '/' },
     { i18nKey: 'nav.about', label: 'About', href: '/pages/about/' },
     { i18nKey: 'nav.services', label: 'Services', href: '/pages/services/' },
-    { i18nKey: 'nav.caseStudies', label: 'Case Studies', href: '/pages/case-studies/' },
-    { i18nKey: 'nav.blog', label: 'Blog', href: '/pages/blog/' },
-    { i18nKey: 'nav.research', label: 'Research', href: '/pages/research/' },
-    { i18nKey: 'nav.careers', label: 'Careers', href: '/pages/careers/' },
     { i18nKey: 'nav.contact', label: 'Contact', href: '/pages/contact/', isCta: true }
   ];
 
