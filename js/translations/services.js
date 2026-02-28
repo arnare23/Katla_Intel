@@ -43,6 +43,9 @@
     'services.overview.card11.title': 'Custom Map Designs',
     'services.overview.card11.desc': 'Bespoke maps and geospatial visualizations that turn location data into clear, compelling stories.',
     'services.overview.card11.link': 'Learn more &rarr;',
+    'services.overview.card12.title': 'AI Security Testing',
+    'services.overview.card12.desc': 'Red-team your chatbots and internal AI systems to find vulnerabilities before attackers do.',
+    'services.overview.card12.link': 'Learn more &rarr;',
     'services.overview.custom.title': "Got another idea? We're up for the challenge.",
     'services.overview.custom.desc': "We're forward-thinking and up for any challenge. If you have a problem that needs solving, let's talk.",
     'services.overview.custom.button': 'Get in Touch',
@@ -146,6 +149,15 @@
     'services.mapDesign.useCase3': 'Geospatial data analysis and location intelligence',
     'services.mapDesign.useCase4': 'Route optimization and fleet tracking visualizations',
 
+    /* ── AI Security Testing ── */
+    'services.aiSecurity.title': 'AI Security Testing',
+    'services.aiSecurity.desc': "We test your AI systems for vulnerabilities before attackers do. From chatbot jailbreaking assessments that reveal whether your bot can be manipulated into leaking company secrets or generating unauthorized content, to internal AI audits that ensure models respect access controls and don't expose confidential data to unauthorized employees -- our red-team testing gives you confidence in your AI deployments.",
+    'services.aiSecurity.useCasesTitle': 'Use Cases',
+    'services.aiSecurity.useCase1': 'Chatbot jailbreak testing and prompt injection vulnerability assessment',
+    'services.aiSecurity.useCase2': "Internal AI access control audits ensuring data doesn't leak to unauthorized users",
+    'services.aiSecurity.useCase3': 'Red-team testing of customer-facing AI for brand safety and data leakage',
+    'services.aiSecurity.useCase4': 'Compliance verification of AI systems against security policies and regulations',
+
     /* ── Process ── */
     'services.process.label': 'How We Work',
     'services.process.title': 'Our Process',
@@ -224,6 +236,9 @@
     'services.overview.card11.title': 'S\u00E9rsni\u00F0in kortager\u00F0',
     'services.overview.card11.desc': 'S\u00E9rsni\u00F0in kort og landfr\u00E6\u00F0ilegar sj\u00F3nmyndir sem breyta sta\u00F0setningarg\u00F6gnum \u00ED sk\u00FDrar s\u00F6gur.',
     'services.overview.card11.link': 'Fr\u00E6\u00F0ast meira &rarr;',
+    'services.overview.card12.title': '\u00D6ryggisprfanir \u00E1 gervigreind',
+    'services.overview.card12.desc': 'Rau\u00F0li\u00F0spr\u00F3fi\u00F0 spjallmenni og innri gervigreindarkerfi til a\u00F0 finna veikleika \u00E1\u00F0ur en \u00E1r\u00E1sara\u00F0ilar gera \u00FEa\u00F0.',
+    'services.overview.card12.link': 'Fr\u00E6\u00F0ast meira &rarr;',
     'services.overview.custom.title': 'Eigi\u00F0 \u00FEi\u00F0 a\u00F0ra hugmynd? Vi\u00F0 erum tilb\u00FAin.',
     'services.overview.custom.desc': 'Vi\u00F0 erum framsj\u00E1 og tilb\u00FAin a\u00F0 takast \u00E1 vi\u00F0 hverja \u00E1skorun. Ef \u00FEi\u00F0 eigi\u00F0 vandm\u00E1l sem \u00FEarf a\u00F0 leysa, h\u00F6fum samband.',
     'services.overview.custom.button': 'Hafa samband',
@@ -327,7 +342,16 @@
     'services.mapDesign.useCase3': 'Landfr\u00E6\u00F0ileg gagnagreining og sta\u00F0setningargreind',
     'services.mapDesign.useCase4': 'Hagr\u00E6\u00F0ing lei\u00F0a og sj\u00F3nmyndir \u00E1 b\u00EDlaflotarakningu',
 
-    /* ── Process ── */
+    /* \u2500\u2500 \u00D6ryggisprfanir \u00E1 gervigreind \u2500\u2500 */
+    'services.aiSecurity.title': '\u00D6ryggisprfanir \u00E1 gervigreind',
+    'services.aiSecurity.desc': 'Vi\u00F0 pr\u00F3fum gervigreindarkerfi ykkar fyrir veikleikum \u00E1\u00F0ur en \u00E1r\u00E1sara\u00F0ilar gera \u00FEa\u00F0. Fr\u00E1 jailbreak-pr\u00F3funum \u00E1 spjallmennum sem lei\u00F0a \u00ED lj\u00F3s hvort h\u00E6gt s\u00E9 a\u00F0 plata \u00FEau til a\u00F0 leka fyrirt\u00E6kjaleyndarm\u00E1lum e\u00F0a b\u00FAa til \u00F3heimila\u00F0 efni, til innri \u00FAttekta \u00E1 gervigreind sem tryggja a\u00F0 l\u00EDk\u00F6n virdi a\u00F0gangsst\u00FDringar og afhjpi ekki tr\u00FAna\u00F0arg\u00F6gn fyrir \u00F3vi\u00F0komandi starfsf\u00F3lki \u2014 rau\u00F0li\u00F0spr\u00F3fanir okkar gefa ykkur traust \u00E1 gervigreindarinnlei\u00F0ingum ykkar.',
+    'services.aiSecurity.useCasesTitle': 'Notkunartilvik',
+    'services.aiSecurity.useCase1': 'Jailbreak-pr\u00F3fanir \u00E1 spjallmennum og mat \u00E1 veikleikum gegn prompt injection',
+    'services.aiSecurity.useCase2': '\u00DAttektir \u00E1 a\u00F0gangsst\u00FDringum innri gervigreindar til a\u00F0 tryggja a\u00F0 g\u00F6gn leki ekki til \u00F3vi\u00F0komandi',
+    'services.aiSecurity.useCase3': 'Rau\u00F0li\u00F0spr\u00F3fanir \u00E1 gervigreind sem sn\u00FDr a\u00F0 vi\u00F0skiptavinum fyrir \u00F6ryggismat og gagnavernd',
+    'services.aiSecurity.useCase4': 'Samr\u00E6missta\u00F0festing gervigreindarkerfa gegn \u00F6ryggisstefnum og regluger\u00F0um',
+
+    /* \u2500\u2500 Process \u2500\u2500 */
     'services.process.label': 'Hvernig vi\u00F0 vinnum',
     'services.process.title': 'Ferli\u00F0 okkar',
     'services.process.subtitle': 'Sannreynd fj\u00F6gurra skrefa a\u00F0fer\u00F0 til a\u00F0 skila gervigreindarlausnum sem virka',

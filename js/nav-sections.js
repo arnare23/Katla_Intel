@@ -44,6 +44,7 @@ window.PAGE_REGISTRY = {
       { url: '/pages/services/sections/chatbot.html', nav: { id: 'service-chatbot', name: 'AI Chatbot Creation', i18nKey: 'navsec.services.chatbot' } },
       { url: '/pages/services/sections/business-platform.html', nav: { id: 'service-business-platform', name: 'Business Management Platform', i18nKey: 'navsec.services.businessPlatform' } },
       { url: '/pages/services/sections/map-design.html', nav: { id: 'service-map-design', name: 'Custom Map Designs', i18nKey: 'navsec.services.mapDesign' } },
+      { url: '/pages/services/sections/ai-security.html', nav: { id: 'service-ai-security', name: 'AI Security Testing', i18nKey: 'navsec.services.aiSecurity' } },
       { url: '/pages/services/sections/process.html' },
       { url: '/pages/services/sections/related-case-studies.html' },
       { url: '/pages/services/sections/cta.html' }

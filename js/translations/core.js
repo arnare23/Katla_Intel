@@ -33,6 +33,7 @@
     'navsec.services.chatbot': 'AI Chatbot Creation',
     'navsec.services.businessPlatform': 'Business Management Platform',
     'navsec.services.mapDesign': 'Custom Map Designs',
+    'navsec.services.aiSecurity': 'AI Security Testing',
     'navsec.contact.form': 'Send a Message',
     'navsec.contact.faq': 'FAQ',
 
@@ -90,6 +91,7 @@
     'navsec.services.chatbot': 'Gervigreindarspi\u00E1ll',
     'navsec.services.businessPlatform': 'Rekstrarstj\u00F3rnunarkerfi',
     'navsec.services.mapDesign': 'S\u00E9rsni\u00F0in kortager\u00F0',
+    'navsec.services.aiSecurity': '\u00D6ryggisprfanir \u00E1 gervigreind',
     'navsec.contact.form': 'Senda skilabo\u00F0',
     'navsec.contact.faq': 'Algengar spurningar',
 
